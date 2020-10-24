@@ -30,6 +30,7 @@ export declare type Scalars = {
 export declare type Query = {
     fetchPlanMasts: Array<PlanMast>;
     fetchPolicyMast: Array<PolicyMast>;
+    fetchReservationObjects: Array<ReservationObject>;
     fetchRoomMasts: Array<RoomMast>;
     fetchS3Objects: Array<S3Object>;
 };
@@ -38,6 +39,9 @@ export declare type QueryFetchPlanMastsArgs = {
 };
 export declare type QueryFetchPolicyMastArgs = {
     policyID?: Maybe<Scalars['ID']>;
+};
+export declare type QueryFetchReservationObjectsArgs = {
+    reservationID?: Maybe<Scalars['ID']>;
 };
 export declare type QueryFetchRoomMastsArgs = {
     roomID?: Maybe<Scalars['ID']>;
@@ -48,10 +52,12 @@ export declare type QueryFetchS3ObjectsArgs = {
 export declare type Mutation = {
     addPlanMast?: Maybe<PlanMast>;
     addPolicyMast?: Maybe<PolicyMast>;
+    addReservationObject?: Maybe<ReservationObject>;
     addRoomMast?: Maybe<RoomMast>;
     addS3Object?: Maybe<S3Object>;
     updatePlanMast?: Maybe<PlanMast>;
     updatePolicyMast?: Maybe<PolicyMast>;
+    updateReservationObject?: Maybe<ReservationObject>;
     updateRoomMast?: Maybe<RoomMast>;
     updateS3Object?: Maybe<S3Object>;
 };
@@ -60,6 +66,9 @@ export declare type MutationAddPlanMastArgs = {
 };
 export declare type MutationAddPolicyMastArgs = {
     input?: Maybe<PolicyMastInput>;
+};
+export declare type MutationAddReservationObjectArgs = {
+    input?: Maybe<ReservationObjectInput>;
 };
 export declare type MutationAddRoomMastArgs = {
     input?: Maybe<RoomMastInput>;
@@ -72,6 +81,9 @@ export declare type MutationUpdatePlanMastArgs = {
 };
 export declare type MutationUpdatePolicyMastArgs = {
     input?: Maybe<PolicyMastInput>;
+};
+export declare type MutationUpdateReservationObjectArgs = {
+    input?: Maybe<ReservationObjectInput>;
 };
 export declare type MutationUpdateRoomMastArgs = {
     input?: Maybe<RoomMastInput>;
@@ -154,32 +166,36 @@ export declare type PolicyMastInput = {
     roomChargePrice?: Maybe<Scalars['Int']>;
 };
 export declare type ReservationObject = {
-    reservationID: Scalars['String'];
+    reservationID: Scalars['ID'];
     checkInTime: Scalars['String'];
     checkOutTime: Scalars['String'];
-    roomNum: Scalars['Int'];
-    planNum: Scalars['Int'];
+    planID: Scalars['ID'];
+    roomID: Scalars['ID'];
+    roomNum?: Maybe<Scalars['Int']>;
+    planNum?: Maybe<Scalars['Int']>;
     peopleNum: Scalars['Int'];
-    totalPrice: Scalars['Int'];
-    guestName: Scalars['String'];
-    guestEmail: Scalars['String'];
-    GuestTell: Scalars['String'];
+    policyID: Scalars['ID'];
+    totalPrice?: Maybe<Scalars['Int']>;
+    guestName?: Maybe<Scalars['String']>;
+    guestEmail?: Maybe<Scalars['String']>;
+    GuestTell?: Maybe<Scalars['String']>;
     canceledAt?: Maybe<Scalars['String']>;
-    policyID: Scalars['String'];
 };
 export declare type ReservationObjectInput = {
-    reservationID: Scalars['String'];
+    reservationID: Scalars['ID'];
     checkInTime: Scalars['String'];
     checkOutTime: Scalars['String'];
-    roomNum: Scalars['Int'];
-    planNum: Scalars['Int'];
+    planID: Scalars['ID'];
+    roomID: Scalars['ID'];
+    roomNum?: Maybe<Scalars['Int']>;
+    planNum?: Maybe<Scalars['Int']>;
     peopleNum: Scalars['Int'];
-    totalPrice: Scalars['Int'];
-    guestName: Scalars['String'];
-    guestEmail: Scalars['String'];
-    GuestTell: Scalars['String'];
+    policyID: Scalars['ID'];
+    totalPrice?: Maybe<Scalars['Int']>;
+    guestName?: Maybe<Scalars['String']>;
+    guestEmail?: Maybe<Scalars['String']>;
+    GuestTell?: Maybe<Scalars['String']>;
     canceledAt?: Maybe<Scalars['String']>;
-    policyID: Scalars['String'];
 };
 export declare type ReservationPlanInfo = {
     reservationID: Scalars['String'];
@@ -390,16 +406,19 @@ export declare type ResolversParentTypes = {
 export declare type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
     fetchPlanMasts?: Resolver<Array<ResolversTypes['PlanMast']>, ParentType, ContextType, RequireFields<QueryFetchPlanMastsArgs, never>>;
     fetchPolicyMast?: Resolver<Array<ResolversTypes['PolicyMast']>, ParentType, ContextType, RequireFields<QueryFetchPolicyMastArgs, never>>;
+    fetchReservationObjects?: Resolver<Array<ResolversTypes['ReservationObject']>, ParentType, ContextType, RequireFields<QueryFetchReservationObjectsArgs, never>>;
     fetchRoomMasts?: Resolver<Array<ResolversTypes['RoomMast']>, ParentType, ContextType, RequireFields<QueryFetchRoomMastsArgs, never>>;
     fetchS3Objects?: Resolver<Array<ResolversTypes['S3Object']>, ParentType, ContextType, RequireFields<QueryFetchS3ObjectsArgs, never>>;
 };
 export declare type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
     addPlanMast?: Resolver<Maybe<ResolversTypes['PlanMast']>, ParentType, ContextType, RequireFields<MutationAddPlanMastArgs, never>>;
     addPolicyMast?: Resolver<Maybe<ResolversTypes['PolicyMast']>, ParentType, ContextType, RequireFields<MutationAddPolicyMastArgs, never>>;
+    addReservationObject?: Resolver<Maybe<ResolversTypes['ReservationObject']>, ParentType, ContextType, RequireFields<MutationAddReservationObjectArgs, never>>;
     addRoomMast?: Resolver<Maybe<ResolversTypes['RoomMast']>, ParentType, ContextType, RequireFields<MutationAddRoomMastArgs, never>>;
     addS3Object?: Resolver<Maybe<ResolversTypes['S3Object']>, ParentType, ContextType, RequireFields<MutationAddS3ObjectArgs, never>>;
     updatePlanMast?: Resolver<Maybe<ResolversTypes['PlanMast']>, ParentType, ContextType, RequireFields<MutationUpdatePlanMastArgs, never>>;
     updatePolicyMast?: Resolver<Maybe<ResolversTypes['PolicyMast']>, ParentType, ContextType, RequireFields<MutationUpdatePolicyMastArgs, never>>;
+    updateReservationObject?: Resolver<Maybe<ResolversTypes['ReservationObject']>, ParentType, ContextType, RequireFields<MutationUpdateReservationObjectArgs, never>>;
     updateRoomMast?: Resolver<Maybe<ResolversTypes['RoomMast']>, ParentType, ContextType, RequireFields<MutationUpdateRoomMastArgs, never>>;
     updateS3Object?: Resolver<Maybe<ResolversTypes['S3Object']>, ParentType, ContextType, RequireFields<MutationUpdateS3ObjectArgs, never>>;
 };
@@ -447,18 +466,20 @@ export declare type PolicyMastResolvers<ContextType = any, ParentType extends Re
     __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 export declare type ReservationObjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['ReservationObject'] = ResolversParentTypes['ReservationObject']> = {
-    reservationID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+    reservationID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
     checkInTime?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
     checkOutTime?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-    roomNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-    planNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+    planID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+    roomID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+    roomNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+    planNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
     peopleNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-    totalPrice?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-    guestName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-    guestEmail?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-    GuestTell?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+    policyID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+    totalPrice?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+    guestName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+    guestEmail?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+    GuestTell?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
     canceledAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-    policyID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
     __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 export declare type ReservationPlanInfoResolvers<ContextType = any, ParentType extends ResolversParentTypes['ReservationPlanInfo'] = ResolversParentTypes['ReservationPlanInfo']> = {

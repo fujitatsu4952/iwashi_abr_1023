@@ -27,6 +27,7 @@ export type Query = {
   __typename?: 'Query';
   fetchPlanMasts: Array<PlanMast>;
   fetchPolicyMast: Array<PolicyMast>;
+  fetchReservationObjects: Array<ReservationObject>;
   fetchRoomMasts: Array<RoomMast>;
   fetchS3Objects: Array<S3Object>;
 };
@@ -39,6 +40,11 @@ export type QueryFetchPlanMastsArgs = {
 
 export type QueryFetchPolicyMastArgs = {
   policyID?: Maybe<Scalars['ID']>;
+};
+
+
+export type QueryFetchReservationObjectsArgs = {
+  reservationID?: Maybe<Scalars['ID']>;
 };
 
 
@@ -55,10 +61,12 @@ export type Mutation = {
   __typename?: 'Mutation';
   addPlanMast?: Maybe<PlanMast>;
   addPolicyMast?: Maybe<PolicyMast>;
+  addReservationObject?: Maybe<ReservationObject>;
   addRoomMast?: Maybe<RoomMast>;
   addS3Object?: Maybe<S3Object>;
   updatePlanMast?: Maybe<PlanMast>;
   updatePolicyMast?: Maybe<PolicyMast>;
+  updateReservationObject?: Maybe<ReservationObject>;
   updateRoomMast?: Maybe<RoomMast>;
   updateS3Object?: Maybe<S3Object>;
 };
@@ -71,6 +79,11 @@ export type MutationAddPlanMastArgs = {
 
 export type MutationAddPolicyMastArgs = {
   input?: Maybe<PolicyMastInput>;
+};
+
+
+export type MutationAddReservationObjectArgs = {
+  input?: Maybe<ReservationObjectInput>;
 };
 
 
@@ -91,6 +104,11 @@ export type MutationUpdatePlanMastArgs = {
 
 export type MutationUpdatePolicyMastArgs = {
   input?: Maybe<PolicyMastInput>;
+};
+
+
+export type MutationUpdateReservationObjectArgs = {
+  input?: Maybe<ReservationObjectInput>;
 };
 
 
@@ -197,33 +215,37 @@ export type PolicyMastInput = {
 
 export type ReservationObject = {
   __typename?: 'ReservationObject';
-  reservationID: Scalars['String'];
+  reservationID: Scalars['ID'];
   checkInTime: Scalars['String'];
   checkOutTime: Scalars['String'];
-  roomNum: Scalars['Int'];
-  planNum: Scalars['Int'];
+  planID: Scalars['ID'];
+  roomID: Scalars['ID'];
+  roomNum?: Maybe<Scalars['Int']>;
+  planNum?: Maybe<Scalars['Int']>;
   peopleNum: Scalars['Int'];
-  totalPrice: Scalars['Int'];
-  guestName: Scalars['String'];
-  guestEmail: Scalars['String'];
-  GuestTell: Scalars['String'];
+  policyID: Scalars['ID'];
+  totalPrice?: Maybe<Scalars['Int']>;
+  guestName?: Maybe<Scalars['String']>;
+  guestEmail?: Maybe<Scalars['String']>;
+  GuestTell?: Maybe<Scalars['String']>;
   canceledAt?: Maybe<Scalars['String']>;
-  policyID: Scalars['String'];
 };
 
 export type ReservationObjectInput = {
-  reservationID: Scalars['String'];
+  reservationID: Scalars['ID'];
   checkInTime: Scalars['String'];
   checkOutTime: Scalars['String'];
-  roomNum: Scalars['Int'];
-  planNum: Scalars['Int'];
+  planID: Scalars['ID'];
+  roomID: Scalars['ID'];
+  roomNum?: Maybe<Scalars['Int']>;
+  planNum?: Maybe<Scalars['Int']>;
   peopleNum: Scalars['Int'];
-  totalPrice: Scalars['Int'];
-  guestName: Scalars['String'];
-  guestEmail: Scalars['String'];
-  GuestTell: Scalars['String'];
+  policyID: Scalars['ID'];
+  totalPrice?: Maybe<Scalars['Int']>;
+  guestName?: Maybe<Scalars['String']>;
+  guestEmail?: Maybe<Scalars['String']>;
+  GuestTell?: Maybe<Scalars['String']>;
   canceledAt?: Maybe<Scalars['String']>;
-  policyID: Scalars['String'];
 };
 
 export type ReservationPlanInfo = {
@@ -417,6 +439,45 @@ export type FetchPolicyMastQuery = (
   )> }
 );
 
+export type UpdateReservationObjectMutationVariables = Exact<{
+  reservationObject?: Maybe<ReservationObjectInput>;
+}>;
+
+
+export type UpdateReservationObjectMutation = (
+  { __typename?: 'Mutation' }
+  & { updateReservationObject?: Maybe<(
+    { __typename?: 'ReservationObject' }
+    & Pick<ReservationObject, 'reservationID'>
+  )> }
+);
+
+export type AddReservationObjectMutationVariables = Exact<{
+  reservationObject?: Maybe<ReservationObjectInput>;
+}>;
+
+
+export type AddReservationObjectMutation = (
+  { __typename?: 'Mutation' }
+  & { addReservationObject?: Maybe<(
+    { __typename?: 'ReservationObject' }
+    & Pick<ReservationObject, 'reservationID'>
+  )> }
+);
+
+export type FetchReservationObjectsQueryVariables = Exact<{
+  reservationID?: Maybe<Scalars['ID']>;
+}>;
+
+
+export type FetchReservationObjectsQuery = (
+  { __typename?: 'Query' }
+  & { fetchReservationObjects: Array<(
+    { __typename?: 'ReservationObject' }
+    & Pick<ReservationObject, 'reservationID' | 'checkInTime' | 'checkOutTime' | 'planID' | 'roomID' | 'roomNum' | 'planNum' | 'peopleNum' | 'policyID' | 'totalPrice' | 'guestName' | 'guestEmail' | 'GuestTell' | 'canceledAt'>
+  )> }
+);
+
 export type UpdateRoomMastMutationVariables = Exact<{
   roomMast?: Maybe<RoomMastInput>;
 }>;
@@ -553,6 +614,40 @@ export const FetchPolicyMastDocument = gql`
   }
 }
     `;
+export const UpdateReservationObjectDocument = gql`
+    mutation updateReservationObject($reservationObject: ReservationObjectInput) {
+  updateReservationObject(input: $reservationObject) {
+    reservationID
+  }
+}
+    `;
+export const AddReservationObjectDocument = gql`
+    mutation addReservationObject($reservationObject: ReservationObjectInput) {
+  addReservationObject(input: $reservationObject) {
+    reservationID
+  }
+}
+    `;
+export const FetchReservationObjectsDocument = gql`
+    query fetchReservationObjects($reservationID: ID) {
+  fetchReservationObjects(reservationID: $reservationID) {
+    reservationID
+    checkInTime
+    checkOutTime
+    planID
+    roomID
+    roomNum
+    planNum
+    peopleNum
+    policyID
+    totalPrice
+    guestName
+    guestEmail
+    GuestTell
+    canceledAt
+  }
+}
+    `;
 export const UpdateRoomMastDocument = gql`
     mutation updateRoomMast($roomMast: RoomMastInput) {
   updateRoomMast(input: $roomMast) {
@@ -635,6 +730,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     fetchPolicyMast(variables?: FetchPolicyMastQueryVariables): Promise<{ data?: FetchPolicyMastQuery | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper(() => client.rawRequest<FetchPolicyMastQuery>(print(FetchPolicyMastDocument), variables));
+    },
+    updateReservationObject(variables?: UpdateReservationObjectMutationVariables): Promise<{ data?: UpdateReservationObjectMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<UpdateReservationObjectMutation>(print(UpdateReservationObjectDocument), variables));
+    },
+    addReservationObject(variables?: AddReservationObjectMutationVariables): Promise<{ data?: AddReservationObjectMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<AddReservationObjectMutation>(print(AddReservationObjectDocument), variables));
+    },
+    fetchReservationObjects(variables?: FetchReservationObjectsQueryVariables): Promise<{ data?: FetchReservationObjectsQuery | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<FetchReservationObjectsQuery>(print(FetchReservationObjectsDocument), variables));
     },
     updateRoomMast(variables?: UpdateRoomMastMutationVariables): Promise<{ data?: UpdateRoomMastMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper(() => client.rawRequest<UpdateRoomMastMutation>(print(UpdateRoomMastDocument), variables));

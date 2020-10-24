@@ -15,7 +15,6 @@ __exportStar(require("./pattern/observer"), exports);
 __exportStar(require("./pattern/debounce"), exports);
 __exportStar(require("./pattern/throttle"), exports);
 __exportStar(require("./pattern/decorator"), exports);
-// function
-__exportStar(require("./hello"), exports);
 // util
 __exportStar(require("./util/compare"), exports);
+// function

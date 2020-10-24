@@ -1,6 +1,7 @@
 type Query {
   fetchPlanMasts(planID: ID): [PlanMast!]!
   fetchPolicyMast(policyID: ID): [PolicyMast!]!
+  fetchReservationObjects(reservationID: ID): [ReservationObject!]!
   fetchRoomMasts(roomID: ID): [RoomMast!]!
   fetchS3Objects(keyName: String): [S3Object!]!
 }
@@ -8,10 +9,12 @@ type Query {
 type Mutation {
   addPlanMast(input: PlanMastInput): PlanMast
   addPolicyMast(input: PolicyMastInput): PolicyMast
+  addReservationObject(input: ReservationObjectInput): ReservationObject
   addRoomMast(input: RoomMastInput): RoomMast
   addS3Object(input: S3ObjectInput): S3Object
   updatePlanMast(input: PlanMastInput): PlanMast
   updatePolicyMast(input: PolicyMastInput): PolicyMast
+  updateReservationObject(input: ReservationObjectInput): ReservationObject
   updateRoomMast(input: RoomMastInput): RoomMast
   updateS3Object(input: S3ObjectInput): S3Object
 }
@@ -103,33 +106,37 @@ input PolicyMastInput {
 }
 
 type ReservationObject {
-  reservationID: String!
+  reservationID: ID!
   checkInTime: String!
   checkOutTime: String!
-  roomNum: Int!
-  planNum: Int!
+  planID: ID!
+  roomID: ID!
+  roomNum: Int
+  planNum: Int
   peopleNum: Int!
-  totalPrice: Int!
-  guestName: String!
-  guestEmail: String!
-  GuestTell: String!
+  policyID: ID!
+  totalPrice: Int
+  guestName: String
+  guestEmail: String
+  GuestTell: String
   canceledAt: String
-  policyID: String!
 }
 
 input ReservationObjectInput {
-  reservationID: String!
+  reservationID: ID!
   checkInTime: String!
   checkOutTime: String!
-  roomNum: Int!
-  planNum: Int!
+  planID: ID!
+  roomID: ID!
+  roomNum: Int
+  planNum: Int
   peopleNum: Int!
-  totalPrice: Int!
-  guestName: String!
-  guestEmail: String!
-  GuestTell: String!
+  policyID: ID!
+  totalPrice: Int
+  guestName: String
+  guestEmail: String
+  GuestTell: String
   canceledAt: String
-  policyID: String!
 }
 
 type ReservationPlanInfo {

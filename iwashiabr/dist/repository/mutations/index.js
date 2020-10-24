@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSdk = exports.FetchS3ObjectsDocument = exports.AddS3ObjectDocument = exports.UpdateS3ObjectDocument = exports.FetchRoomMastsDocument = exports.AddRoomMastDocument = exports.UpdateRoomMastDocument = exports.FetchPolicyMastDocument = exports.AddPolicyMastDocument = exports.UpdatePolicyMastDocument = exports.FetchPlanMastsDocument = exports.AddPlanMastDocument = exports.UpdatePlanMastDocument = void 0;
+exports.getSdk = exports.FetchS3ObjectsDocument = exports.AddS3ObjectDocument = exports.UpdateS3ObjectDocument = exports.FetchRoomMastsDocument = exports.AddRoomMastDocument = exports.UpdateRoomMastDocument = exports.FetchReservationObjectsDocument = exports.AddReservationObjectDocument = exports.UpdateReservationObjectDocument = exports.FetchPolicyMastDocument = exports.AddPolicyMastDocument = exports.UpdatePolicyMastDocument = exports.FetchPlanMastsDocument = exports.AddPlanMastDocument = exports.UpdatePlanMastDocument = void 0;
 const graphql_1 = require("graphql");
 const graphql_tag_1 = __importDefault(require("graphql-tag"));
 exports.UpdatePlanMastDocument = graphql_tag_1.default `
@@ -60,6 +60,40 @@ exports.FetchPolicyMastDocument = graphql_tag_1.default `
   fetchPolicyMast(policyID: $policyID) {
     policyID
     roomChargePrice
+  }
+}
+    `;
+exports.UpdateReservationObjectDocument = graphql_tag_1.default `
+    mutation updateReservationObject($reservationObject: ReservationObjectInput) {
+  updateReservationObject(input: $reservationObject) {
+    reservationID
+  }
+}
+    `;
+exports.AddReservationObjectDocument = graphql_tag_1.default `
+    mutation addReservationObject($reservationObject: ReservationObjectInput) {
+  addReservationObject(input: $reservationObject) {
+    reservationID
+  }
+}
+    `;
+exports.FetchReservationObjectsDocument = graphql_tag_1.default `
+    query fetchReservationObjects($reservationID: ID) {
+  fetchReservationObjects(reservationID: $reservationID) {
+    reservationID
+    checkInTime
+    checkOutTime
+    planID
+    roomID
+    roomNum
+    planNum
+    peopleNum
+    policyID
+    totalPrice
+    guestName
+    guestEmail
+    GuestTell
+    canceledAt
   }
 }
     `;
@@ -141,6 +175,15 @@ function getSdk(client, withWrapper = defaultWrapper) {
         },
         fetchPolicyMast(variables) {
             return withWrapper(() => client.rawRequest(graphql_1.print(exports.FetchPolicyMastDocument), variables));
+        },
+        updateReservationObject(variables) {
+            return withWrapper(() => client.rawRequest(graphql_1.print(exports.UpdateReservationObjectDocument), variables));
+        },
+        addReservationObject(variables) {
+            return withWrapper(() => client.rawRequest(graphql_1.print(exports.AddReservationObjectDocument), variables));
+        },
+        fetchReservationObjects(variables) {
+            return withWrapper(() => client.rawRequest(graphql_1.print(exports.FetchReservationObjectsDocument), variables));
         },
         updateRoomMast(variables) {
             return withWrapper(() => client.rawRequest(graphql_1.print(exports.UpdateRoomMastDocument), variables));
