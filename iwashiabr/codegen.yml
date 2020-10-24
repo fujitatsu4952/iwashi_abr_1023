@@ -3,7 +3,7 @@ schema:
   - "./schema/**/*.graphql"
 documents: null
 generates:
-  src//entity/type.ts:
+  src/entity/type.ts:
     plugins:
       - "typescript"
       - "typescript-resolvers"
@@ -19,10 +19,6 @@ generates:
         AWSURL: string
         AWSPhone: string
         AWSIPAddress: string
-
-  src/entity/schema.graphql:
-    plugins:
-      - "schema-ast"
 
   dist/schema.graphql:
     plugins:
