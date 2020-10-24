@@ -1,7 +1,6 @@
 overwrite: true
-schema:
-  - "./schema/**/*.graphql"
-documents: null
+schema: "./schema/**/*.graphql"
+documents: "./schema/mutation/*.graphql"
 generates:
   src/entity/type.ts:
     plugins:
@@ -23,3 +22,11 @@ generates:
   dist/schema.graphql:
     plugins:
       - "schema-ast"
+
+  src/repository/mutations/index.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+    config:
+      rawRequest: true
