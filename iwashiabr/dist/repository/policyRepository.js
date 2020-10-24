@@ -15,7 +15,7 @@ class policyMastRepository {
     // 他の処理も追加可能
     async fetchPolicyMast(policyID) {
         const res = await sdk.fetchPolicyMast({ policyID });
-        return res.data?.fetchPolicyMast[0];
+        return res;
     }
 }
 exports.policyMastRepository = policyMastRepository;
