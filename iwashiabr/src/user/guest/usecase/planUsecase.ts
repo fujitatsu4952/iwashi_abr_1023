@@ -8,5 +8,5 @@ export interface IGuestPlanUsecase {
     // 作ったものを更新
     updateMast(planMast: PlanMast): Promise<any>;
     // これまでのプラン一覧を取得
-    fetchPlanMasts(planID: Scalars['ID']): Promise<any | undefined>;
+    fetchPlanMasts(planID: Scalars['ID'] | undefined): Promise<any | undefined>;
 }

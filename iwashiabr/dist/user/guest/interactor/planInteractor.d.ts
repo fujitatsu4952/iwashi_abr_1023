@@ -5,5 +5,5 @@ export declare class GuestPlanInteractor implements IGuestPlanUsecase {
     getBlancMast(): Promise<PlanMast>;
     addMast(planMast: PlanMast): Promise<any>;
     updateMast(planMast: PlanMast): Promise<any>;
-    fetchPlanMasts(planID: string): Promise<any>;
+    fetchPlanMasts(planID: string | undefined): Promise<any>;
 }
