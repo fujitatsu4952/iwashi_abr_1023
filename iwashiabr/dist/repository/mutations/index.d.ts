@@ -1,0 +1,525 @@
+import { GraphQLClient } from 'graphql-request';
+import { GraphQLError } from 'graphql-request/dist/types';
+import { Headers } from 'graphql-request/dist/types.dom';
+export declare type Maybe<T> = T | null;
+export declare type Exact<T extends {
+    [key: string]: unknown;
+}> = {
+    [K in keyof T]: T[K];
+};
+/** All built-in and custom scalars, mapped to their actual values */
+export declare type Scalars = {
+    ID: string;
+    String: string;
+    Boolean: boolean;
+    Int: number;
+    Float: number;
+    AWSDate: any;
+    AWSDateTime: any;
+    AWSTimestamp: any;
+    AWSTime: any;
+    AWSEmail: any;
+    AWSJSON: any;
+    AWSURL: any;
+    AWSPhone: any;
+    AWSIPAddress: any;
+};
+export declare type Query = {
+    __typename?: 'Query';
+    fetchPlanMasts: Array<PlanMast>;
+    fetchPolicyMast: Array<PolicyMast>;
+    fetchRoomMasts: Array<RoomMast>;
+    fetchS3Objects: Array<S3Object>;
+};
+export declare type QueryFetchPlanMastsArgs = {
+    planID?: Maybe<Scalars['ID']>;
+};
+export declare type QueryFetchPolicyMastArgs = {
+    policyID?: Maybe<Scalars['ID']>;
+};
+export declare type QueryFetchRoomMastsArgs = {
+    roomID?: Maybe<Scalars['ID']>;
+};
+export declare type QueryFetchS3ObjectsArgs = {
+    keyName?: Maybe<Scalars['String']>;
+};
+export declare type Mutation = {
+    __typename?: 'Mutation';
+    addPlanMast?: Maybe<PlanMast>;
+    addPolicyMast?: Maybe<PolicyMast>;
+    addRoomMast?: Maybe<RoomMast>;
+    addS3Object?: Maybe<S3Object>;
+    updatePlanMast?: Maybe<PlanMast>;
+    updatePolicyMast?: Maybe<PolicyMast>;
+    updateRoomMast?: Maybe<RoomMast>;
+    updateS3Object?: Maybe<S3Object>;
+};
+export declare type MutationAddPlanMastArgs = {
+    input?: Maybe<PlanMastInput>;
+};
+export declare type MutationAddPolicyMastArgs = {
+    input?: Maybe<PolicyMastInput>;
+};
+export declare type MutationAddRoomMastArgs = {
+    input?: Maybe<RoomMastInput>;
+};
+export declare type MutationAddS3ObjectArgs = {
+    input?: Maybe<S3ObjectInput>;
+};
+export declare type MutationUpdatePlanMastArgs = {
+    input?: Maybe<PlanMastInput>;
+};
+export declare type MutationUpdatePolicyMastArgs = {
+    input?: Maybe<PolicyMastInput>;
+};
+export declare type MutationUpdateRoomMastArgs = {
+    input?: Maybe<RoomMastInput>;
+};
+export declare type MutationUpdateS3ObjectArgs = {
+    input?: Maybe<S3ObjectInput>;
+};
+export declare type CancelPolicyMast = {
+    __typename?: 'CancelPolicyMast';
+    policyID: Scalars['ID'];
+    beforeTime?: Maybe<Scalars['String']>;
+    chargeRatio?: Maybe<Scalars['Int']>;
+};
+export declare type CancelPolicyMastInput = {
+    policyID: Scalars['ID'];
+    beforeTime?: Maybe<Scalars['String']>;
+    chargeRatio?: Maybe<Scalars['Int']>;
+};
+export declare type ImageMast = {
+    __typename?: 'ImageMast';
+    imageID: Scalars['ID'];
+    bucket: Scalars['String'];
+    key: Scalars['String'];
+    mimeType?: Maybe<Scalars['String']>;
+    fileName?: Maybe<Scalars['String']>;
+};
+export declare type ImageMastInput = {
+    imageID: Scalars['ID'];
+    bucket: Scalars['String'];
+    key: Scalars['String'];
+    mimeType?: Maybe<Scalars['String']>;
+    fileName?: Maybe<Scalars['String']>;
+};
+export declare type PlanImageMappingTemplate = {
+    __typename?: 'PlanImageMappingTemplate';
+    planID: Scalars['String'];
+    imageID?: Maybe<Scalars['String']>;
+};
+export declare type PlanImageMappingTemplateInput = {
+    planID: Scalars['String'];
+    imageID?: Maybe<Scalars['String']>;
+};
+export declare type PlanMast = {
+    __typename?: 'PlanMast';
+    planID: Scalars['ID'];
+    name: Scalars['String'];
+    description: Scalars['String'];
+    subDescription: Scalars['String'];
+    price: Scalars['Int'];
+    stockNum: Scalars['Int'];
+    deletedAt?: Maybe<Scalars['String']>;
+    inSale?: Maybe<Scalars['Boolean']>;
+};
+export declare type PlanMastInput = {
+    planID: Scalars['ID'];
+    name: Scalars['String'];
+    description: Scalars['String'];
+    subDescription?: Maybe<Scalars['String']>;
+    price: Scalars['Int'];
+    stockNum: Scalars['Int'];
+    deletedAt?: Maybe<Scalars['String']>;
+    inSale?: Maybe<Scalars['Boolean']>;
+};
+export declare type PlanStatus = {
+    __typename?: 'PlanStatus';
+    planID: Scalars['ID'];
+    Time: Scalars['String'];
+    soldNum?: Maybe<Scalars['Int']>;
+    availableNum?: Maybe<Scalars['Int']>;
+    isAvailabe?: Maybe<Scalars['Boolean']>;
+};
+export declare type PlanStatusInput = {
+    planID: Scalars['ID'];
+    Time: Scalars['String'];
+    soldNum?: Maybe<Scalars['Int']>;
+    availableNum?: Maybe<Scalars['Int']>;
+    isAvailabe?: Maybe<Scalars['Boolean']>;
+};
+export declare type PolicyMast = {
+    __typename?: 'PolicyMast';
+    policyID: Scalars['ID'];
+    roomChargePrice?: Maybe<Scalars['Int']>;
+};
+export declare type PolicyMastInput = {
+    policyID: Scalars['ID'];
+    roomChargePrice?: Maybe<Scalars['Int']>;
+};
+export declare type ReservationObject = {
+    __typename?: 'ReservationObject';
+    reservationID: Scalars['String'];
+    checkInTime: Scalars['String'];
+    checkOutTime: Scalars['String'];
+    roomNum: Scalars['Int'];
+    planNum: Scalars['Int'];
+    peopleNum: Scalars['Int'];
+    totalPrice: Scalars['Int'];
+    guestName: Scalars['String'];
+    guestEmail: Scalars['String'];
+    GuestTell: Scalars['String'];
+    canceledAt?: Maybe<Scalars['String']>;
+    policyID: Scalars['String'];
+};
+export declare type ReservationObjectInput = {
+    reservationID: Scalars['String'];
+    checkInTime: Scalars['String'];
+    checkOutTime: Scalars['String'];
+    roomNum: Scalars['Int'];
+    planNum: Scalars['Int'];
+    peopleNum: Scalars['Int'];
+    totalPrice: Scalars['Int'];
+    guestName: Scalars['String'];
+    guestEmail: Scalars['String'];
+    GuestTell: Scalars['String'];
+    canceledAt?: Maybe<Scalars['String']>;
+    policyID: Scalars['String'];
+};
+export declare type ReservationPlanInfo = {
+    __typename?: 'ReservationPlanInfo';
+    reservationID: Scalars['String'];
+    planID: Scalars['String'];
+    name: Scalars['String'];
+    amount: Scalars['String'];
+    price: Scalars['String'];
+};
+export declare type ReservationPlanInfoInput = {
+    reservationID: Scalars['String'];
+    planID: Scalars['String'];
+    name: Scalars['String'];
+    amount: Scalars['String'];
+    price: Scalars['String'];
+};
+export declare type ReservationRoomInfo = {
+    __typename?: 'ReservationRoomInfo';
+    reservationID: Scalars['String'];
+    roomID: Scalars['String'];
+    name: Scalars['String'];
+    amount: Scalars['String'];
+    price: Scalars['String'];
+};
+export declare type ReservationRoomInfoInput = {
+    reservationID: Scalars['String'];
+    roomID: Scalars['String'];
+    name: Scalars['String'];
+    amount: Scalars['String'];
+    price: Scalars['String'];
+};
+export declare type RoomImageMappingTemplate = {
+    __typename?: 'RoomImageMappingTemplate';
+    roomID: Scalars['String'];
+    imageID?: Maybe<Scalars['String']>;
+};
+export declare type RoomImageMappingTemplateInput = {
+    roomID: Scalars['String'];
+    imageID?: Maybe<Scalars['String']>;
+};
+export declare type RoomMast = {
+    __typename?: 'RoomMast';
+    roomID: Scalars['ID'];
+    name: Scalars['String'];
+    description: Scalars['String'];
+    subDescription: Scalars['String'];
+    maxPeopleNum: Scalars['Int'];
+    stockNum: Scalars['Int'];
+    minOrderNum: Scalars['Int'];
+    deletedAt?: Maybe<Scalars['String']>;
+    inSale?: Maybe<Scalars['Boolean']>;
+};
+export declare type RoomMastInput = {
+    roomID: Scalars['ID'];
+    name: Scalars['String'];
+    description: Scalars['String'];
+    subDescription: Scalars['String'];
+    maxPeopleNum: Scalars['Int'];
+    stockNum: Scalars['Int'];
+    minOrderNum: Scalars['Int'];
+    deletedAt?: Maybe<Scalars['String']>;
+    inSale?: Maybe<Scalars['Boolean']>;
+};
+export declare type RoomStatus = {
+    __typename?: 'RoomStatus';
+    roomID: Scalars['ID'];
+    Time: Scalars['String'];
+    soldNum?: Maybe<Scalars['Int']>;
+    availableNum?: Maybe<Scalars['Int']>;
+    isAvailabe?: Maybe<Scalars['Boolean']>;
+};
+export declare type RoomStatusInput = {
+    roomID: Scalars['ID'];
+    Time: Scalars['String'];
+    soldNum?: Maybe<Scalars['Int']>;
+    availableNum?: Maybe<Scalars['Int']>;
+    isAvailabe?: Maybe<Scalars['Boolean']>;
+};
+export declare type S3Object = {
+    __typename?: 'S3Object';
+    bucket?: Maybe<Scalars['String']>;
+    keyName: Scalars['String'];
+    region: Scalars['String'];
+    mimeType?: Maybe<Scalars['String']>;
+    fileName?: Maybe<Scalars['String']>;
+};
+export declare type S3ObjectInput = {
+    bucket?: Maybe<Scalars['String']>;
+    keyName: Scalars['String'];
+    region: Scalars['String'];
+    mimeType?: Maybe<Scalars['String']>;
+    fileName?: Maybe<Scalars['String']>;
+};
+export declare type UpdatePlanMastMutationVariables = Exact<{
+    planMast?: Maybe<PlanMastInput>;
+}>;
+export declare type UpdatePlanMastMutation = ({
+    __typename?: 'Mutation';
+} & {
+    updatePlanMast?: Maybe<({
+        __typename?: 'PlanMast';
+    } & Pick<PlanMast, 'name'>)>;
+});
+export declare type AddPlanMastMutationVariables = Exact<{
+    planMast?: Maybe<PlanMastInput>;
+}>;
+export declare type AddPlanMastMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addPlanMast?: Maybe<({
+        __typename?: 'PlanMast';
+    } & Pick<PlanMast, 'planID' | 'name' | 'description' | 'subDescription' | 'price' | 'stockNum' | 'deletedAt' | 'inSale'>)>;
+});
+export declare type FetchPlanMastsQueryVariables = Exact<{
+    planID?: Maybe<Scalars['ID']>;
+}>;
+export declare type FetchPlanMastsQuery = ({
+    __typename?: 'Query';
+} & {
+    fetchPlanMasts: Array<({
+        __typename?: 'PlanMast';
+    } & Pick<PlanMast, 'planID' | 'name' | 'description' | 'subDescription' | 'price' | 'stockNum' | 'deletedAt' | 'inSale'>)>;
+});
+export declare type UpdatePolicyMastMutationVariables = Exact<{
+    policyMast?: Maybe<PolicyMastInput>;
+}>;
+export declare type UpdatePolicyMastMutation = ({
+    __typename?: 'Mutation';
+} & {
+    updatePolicyMast?: Maybe<({
+        __typename?: 'PolicyMast';
+    } & Pick<PolicyMast, 'policyID'>)>;
+});
+export declare type AddPolicyMastMutationVariables = Exact<{
+    policyMast?: Maybe<PolicyMastInput>;
+}>;
+export declare type AddPolicyMastMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addPolicyMast?: Maybe<({
+        __typename?: 'PolicyMast';
+    } & Pick<PolicyMast, 'policyID'>)>;
+});
+export declare type FetchPolicyMastQueryVariables = Exact<{
+    policyID?: Maybe<Scalars['ID']>;
+}>;
+export declare type FetchPolicyMastQuery = ({
+    __typename?: 'Query';
+} & {
+    fetchPolicyMast: Array<({
+        __typename?: 'PolicyMast';
+    } & Pick<PolicyMast, 'policyID' | 'roomChargePrice'>)>;
+});
+export declare type UpdateRoomMastMutationVariables = Exact<{
+    roomMast?: Maybe<RoomMastInput>;
+}>;
+export declare type UpdateRoomMastMutation = ({
+    __typename?: 'Mutation';
+} & {
+    updateRoomMast?: Maybe<({
+        __typename?: 'RoomMast';
+    } & Pick<RoomMast, 'name'>)>;
+});
+export declare type AddRoomMastMutationVariables = Exact<{
+    roomMast?: Maybe<RoomMastInput>;
+}>;
+export declare type AddRoomMastMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addRoomMast?: Maybe<({
+        __typename?: 'RoomMast';
+    } & Pick<RoomMast, 'name'>)>;
+});
+export declare type FetchRoomMastsQueryVariables = Exact<{
+    roomID?: Maybe<Scalars['ID']>;
+}>;
+export declare type FetchRoomMastsQuery = ({
+    __typename?: 'Query';
+} & {
+    fetchRoomMasts: Array<({
+        __typename?: 'RoomMast';
+    } & Pick<RoomMast, 'roomID' | 'name' | 'description' | 'subDescription' | 'maxPeopleNum' | 'stockNum' | 'minOrderNum' | 'deletedAt' | 'inSale'>)>;
+});
+export declare type UpdateS3ObjectMutationVariables = Exact<{
+    s3Object?: Maybe<S3ObjectInput>;
+}>;
+export declare type UpdateS3ObjectMutation = ({
+    __typename?: 'Mutation';
+} & {
+    updateS3Object?: Maybe<({
+        __typename?: 'S3Object';
+    } & Pick<S3Object, 'bucket'>)>;
+});
+export declare type AddS3ObjectMutationVariables = Exact<{
+    s3Object?: Maybe<S3ObjectInput>;
+}>;
+export declare type AddS3ObjectMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addS3Object?: Maybe<({
+        __typename?: 'S3Object';
+    } & Pick<S3Object, 'bucket' | 'keyName' | 'region' | 'mimeType' | 'fileName'>)>;
+});
+export declare type FetchS3ObjectsQueryVariables = Exact<{
+    keyName?: Maybe<Scalars['String']>;
+}>;
+export declare type FetchS3ObjectsQuery = ({
+    __typename?: 'Query';
+} & {
+    fetchS3Objects: Array<({
+        __typename?: 'S3Object';
+    } & Pick<S3Object, 'bucket' | 'keyName' | 'region' | 'mimeType' | 'fileName'>)>;
+});
+export declare const UpdatePlanMastDocument: import("graphql").DocumentNode;
+export declare const AddPlanMastDocument: import("graphql").DocumentNode;
+export declare const FetchPlanMastsDocument: import("graphql").DocumentNode;
+export declare const UpdatePolicyMastDocument: import("graphql").DocumentNode;
+export declare const AddPolicyMastDocument: import("graphql").DocumentNode;
+export declare const FetchPolicyMastDocument: import("graphql").DocumentNode;
+export declare const UpdateRoomMastDocument: import("graphql").DocumentNode;
+export declare const AddRoomMastDocument: import("graphql").DocumentNode;
+export declare const FetchRoomMastsDocument: import("graphql").DocumentNode;
+export declare const UpdateS3ObjectDocument: import("graphql").DocumentNode;
+export declare const AddS3ObjectDocument: import("graphql").DocumentNode;
+export declare const FetchS3ObjectsDocument: import("graphql").DocumentNode;
+export declare type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
+export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionWrapper): {
+    updatePlanMast(variables?: Exact<{
+        planMast?: PlanMastInput | null | undefined;
+    }> | undefined): Promise<{
+        data?: UpdatePlanMastMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    addPlanMast(variables?: Exact<{
+        planMast?: PlanMastInput | null | undefined;
+    }> | undefined): Promise<{
+        data?: AddPlanMastMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    fetchPlanMasts(variables?: Exact<{
+        planID?: string | null | undefined;
+    }> | undefined): Promise<{
+        data?: FetchPlanMastsQuery | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    updatePolicyMast(variables?: Exact<{
+        policyMast?: PolicyMastInput | null | undefined;
+    }> | undefined): Promise<{
+        data?: UpdatePolicyMastMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    addPolicyMast(variables?: Exact<{
+        policyMast?: PolicyMastInput | null | undefined;
+    }> | undefined): Promise<{
+        data?: AddPolicyMastMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    fetchPolicyMast(variables?: Exact<{
+        policyID?: string | null | undefined;
+    }> | undefined): Promise<{
+        data?: FetchPolicyMastQuery | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    updateRoomMast(variables?: Exact<{
+        roomMast?: RoomMastInput | null | undefined;
+    }> | undefined): Promise<{
+        data?: UpdateRoomMastMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    addRoomMast(variables?: Exact<{
+        roomMast?: RoomMastInput | null | undefined;
+    }> | undefined): Promise<{
+        data?: AddRoomMastMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    fetchRoomMasts(variables?: Exact<{
+        roomID?: string | null | undefined;
+    }> | undefined): Promise<{
+        data?: FetchRoomMastsQuery | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    updateS3Object(variables?: Exact<{
+        s3Object?: S3ObjectInput | null | undefined;
+    }> | undefined): Promise<{
+        data?: UpdateS3ObjectMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    addS3Object(variables?: Exact<{
+        s3Object?: S3ObjectInput | null | undefined;
+    }> | undefined): Promise<{
+        data?: AddS3ObjectMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    fetchS3Objects(variables?: Exact<{
+        keyName?: string | null | undefined;
+    }> | undefined): Promise<{
+        data?: FetchS3ObjectsQuery | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+};
+export declare type Sdk = ReturnType<typeof getSdk>;
