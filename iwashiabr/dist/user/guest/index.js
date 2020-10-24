@@ -11,3 +11,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./interactor/planInteractor"), exports);
+__exportStar(require("./interactor/roomInteractor"), exports);
+__exportStar(require("./interactor/policyInteractor"), exports);

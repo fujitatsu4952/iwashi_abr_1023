@@ -31,6 +31,4 @@ export class GuestPlanInteractor implements IGuestPlanUsecase {
     public async fetchPlanMasts(planID: string | undefined): Promise<any> {
         return await this.planMastRepository.fetchPlanMasts(planID)
     }
-    
-   
 }
