@@ -13,3 +13,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./planRepository"), exports);
 __exportStar(require("./policyRepository"), exports);
 __exportStar(require("./roomRepository"), exports);
+__exportStar(require("./imageRepository"), exports);

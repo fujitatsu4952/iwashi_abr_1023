@@ -13,3 +13,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./interactor/planInteractor"), exports);
 __exportStar(require("./interactor/roomInteractor"), exports);
 __exportStar(require("./interactor/policyInteractor"), exports);
+__exportStar(require("./interactor/imageInteractor"), exports);

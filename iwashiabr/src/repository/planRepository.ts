@@ -1,4 +1,4 @@
-import { PlanMast, PlanMastInput, Scalars } from "../index";
+import { PlanMast } from "../index";
 import { request, GraphQLClient, gql } from "graphql-request";
 import { getSdk } from "./mutations";
 
