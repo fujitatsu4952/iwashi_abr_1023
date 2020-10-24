@@ -1,4 +1,4 @@
-import {IGuestRoomUsecase} from "../usecase/roomUsecase";
+import {IHostRoomUsecase} from "../usecase/roomUsecase";
 import {
     RoomMast
 } from '../../../entity/type'
@@ -6,7 +6,7 @@ import {roomMastRepository} from "../../../repository"
 import { getUniqueID } from "../../../util/generateUuid";
 
 
-export class GuestRoomInteractor implements IGuestRoomUsecase {
+export class HostRoomInteractor implements IHostRoomUsecase {
     // ここでroomMastをインスタンス化
     private roomMastRepository = new roomMastRepository()
 

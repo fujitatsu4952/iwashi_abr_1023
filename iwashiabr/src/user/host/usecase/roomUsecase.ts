@@ -1,6 +1,6 @@
 import { RoomMast, Scalars } from '../../../entity';
 
-export interface IGuestRoomUsecase {
+export interface IHostRoomUsecase {
     // 新しいプランフォーム作成
     getBlancMast(): Promise<RoomMast>;
     // 新しく作ったものを送信

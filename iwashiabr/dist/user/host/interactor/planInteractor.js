@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GuestPlanInteractor = void 0;
+exports.HostPlanInteractor = void 0;
 const repository_1 = require("../../../repository");
 const generateUuid_1 = require("../../../util/generateUuid");
-class GuestPlanInteractor {
+class HostPlanInteractor {
     constructor() {
         // ここでplanMastをインスタンス化
         this.planMastRepository = new repository_1.planMastRepository();
@@ -31,4 +31,4 @@ class GuestPlanInteractor {
         return await this.planMastRepository.fetchPlanMasts(planID);
     }
 }
-exports.GuestPlanInteractor = GuestPlanInteractor;
+exports.HostPlanInteractor = HostPlanInteractor;

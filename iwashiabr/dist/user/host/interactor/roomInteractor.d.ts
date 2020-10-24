@@ -1,6 +1,6 @@
-import { IGuestRoomUsecase } from "../usecase/roomUsecase";
+import { IHostRoomUsecase } from "../usecase/roomUsecase";
 import { RoomMast } from '../../../entity/type';
-export declare class GuestRoomInteractor implements IGuestRoomUsecase {
+export declare class HostRoomInteractor implements IHostRoomUsecase {
     private roomMastRepository;
     getBlancMast(): Promise<RoomMast>;
     addMast(roomMast: RoomMast): Promise<any>;

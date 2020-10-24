@@ -1,5 +1,5 @@
 import { RoomMast, Scalars } from '../../../entity';
-export interface IGuestRoomUsecase {
+export interface IHostRoomUsecase {
     getBlancMast(): Promise<RoomMast>;
     addMast(roomMast: RoomMast): Promise<any>;
     updateMast(roomMast: RoomMast): Promise<any>;

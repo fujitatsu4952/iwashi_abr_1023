@@ -1,6 +1,6 @@
 import { PolicyMast, Scalars } from '../../../entity';
 
-export interface IGuestPolicyUsecase {
+export interface IHostPolicyUsecase {
     // 作ったものを更新
     updateMast(policyMast: PolicyMast): Promise<any>;
     // これまでのプラン一覧を取得

@@ -1,11 +1,11 @@
-import {IGuestPolicyUsecase} from "../usecase/policyUsecase";
+import {IHostPolicyUsecase} from "../usecase/policyUsecase";
 import {
     PolicyMast
 } from '../../../entity/type'
 import {policyMastRepository} from "../../../repository"
 
 
-export class GuestPolicyInteractor implements IGuestPolicyUsecase {
+export class HostPolicyInteractor implements IHostPolicyUsecase {
     // ここでpolicyMastをインスタンス化
     private policyMastRepository = new policyMastRepository()
 

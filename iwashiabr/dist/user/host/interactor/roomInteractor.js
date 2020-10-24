@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GuestRoomInteractor = void 0;
+exports.HostRoomInteractor = void 0;
 const repository_1 = require("../../../repository");
 const generateUuid_1 = require("../../../util/generateUuid");
-class GuestRoomInteractor {
+class HostRoomInteractor {
     constructor() {
         // ここでroomMastをインスタンス化
         this.roomMastRepository = new repository_1.roomMastRepository();
@@ -32,4 +32,4 @@ class GuestRoomInteractor {
         return (await this.roomMastRepository.fetchRoomMasts(roomID));
     }
 }
-exports.GuestRoomInteractor = GuestRoomInteractor;
+exports.HostRoomInteractor = HostRoomInteractor;

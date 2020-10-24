@@ -1,4 +1,4 @@
-import {IGuestPlanUsecase} from "../usecase/planUsecase";
+import {IHostPlanUsecase} from "../usecase/planUsecase";
 import {
     PlanMast
 } from '../../../entity/type'
@@ -6,7 +6,7 @@ import {planMastRepository} from "../../../repository"
 import { getUniqueID } from "../../../util/generateUuid";
 
 
-export class GuestPlanInteractor implements IGuestPlanUsecase {
+export class HostPlanInteractor implements IHostPlanUsecase {
     // ここでplanMastをインスタンス化
     private planMastRepository = new planMastRepository()
     public async getBlancMast(): Promise<PlanMast> {
