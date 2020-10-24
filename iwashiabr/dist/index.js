@@ -13,3 +13,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./common"), exports);
 __exportStar(require("./entity"), exports);
 __exportStar(require("./repository"), exports);
+__exportStar(require("./user"), exports);
