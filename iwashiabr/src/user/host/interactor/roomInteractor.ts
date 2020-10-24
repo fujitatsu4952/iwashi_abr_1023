@@ -25,10 +25,10 @@ export class GuestRoomInteractor implements IGuestRoomUsecase {
         };
     }
     public async addMast(roomMast: RoomMast): Promise<any> {
-        throw new Error('Method not implemented.');
+        return await this.roomMastRepository.addRoom(roomMast);
     }
     public async updateMast(roomMast: RoomMast): Promise<any> {
-        throw new Error('Method not implemented.');
+        throw await this.roomMastRepository.updateRoom(roomMast);
     }
     public async fetchRoomMasts(roomID: string | undefined): Promise<any> {
         return (await this.roomMastRepository.fetchRoomMasts(roomID))
