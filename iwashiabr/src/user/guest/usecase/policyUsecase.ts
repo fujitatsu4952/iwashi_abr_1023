@@ -2,5 +2,5 @@ import { PolicyMast, Scalars } from '../../../entity';
 
 export interface IGuestPolicyUsecase {
     // これまでのプラン一覧を取得
-    fetchPolicyMast(policyID: Scalars['ID'] | undefined): Promise<any | undefined>;
+    fetchPolicyMast(policyID: Scalars['ID'] | undefined | null): Promise<any | undefined>;
 }

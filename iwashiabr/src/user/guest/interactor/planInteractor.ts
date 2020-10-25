@@ -22,10 +22,10 @@ export class GuestPlanInteractor implements IGuestPlanUsecase {
             inSale: undefined
         };
     }
-    addMast(planMast: PlanMast): Promise<any> {
+    addMast(planMast: PlanMast | null): Promise<any> {
         throw new Error('Method not implemented.');
     }
-    updateMast(planMast: PlanMast): Promise<any> {
+    updateMast(planMast: PlanMast | null): Promise<any> {
         throw new Error('Method not implemented.');
     }
     public async fetchPlanMasts(planID: string | undefined): Promise<any> {

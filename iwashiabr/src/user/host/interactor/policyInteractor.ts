@@ -9,11 +9,11 @@ export class HostPolicyInteractor implements IHostPolicyUsecase {
     // ここでpolicyMastをインスタンス化
     private policyMastRepository = new policyMastRepository()
 
-    public async updateMast(policyMast: PolicyMast): Promise<any> {
+    public async updateMast(policyMast: PolicyMast | null): Promise<any> {
         return await this.policyMastRepository.updatePolicy(policyMast)
     }
 
-    public async fetchPolicyMast(policyID: string | undefined): Promise<any> {
+    public async fetchPolicyMast(policyID: string | undefined | null): Promise<any> {
         return (await this.policyMastRepository.fetchPolicyMast('174da08566682'))
     }
    

@@ -22,13 +22,13 @@ export class HostPlanInteractor implements IHostPlanUsecase {
             inSale: undefined
         };
     }
-    public async addMast(planMast: PlanMast): Promise<any> {
+    public async addMast(planMast: PlanMast | null): Promise<any> {
         return await this.planMastRepository.addPlan(planMast)
     }
-    public async updateMast(planMast: PlanMast): Promise<any> {
+    public async updateMast(planMast: PlanMast | null): Promise<any> {
         return await this.planMastRepository.updatePlan(planMast)
     }
-    public async fetchPlanMasts(planID: string | undefined): Promise<any> {
+    public async fetchPlanMasts(planID: string | undefined | null): Promise<any> {
         return await this.planMastRepository.fetchPlanMasts(planID)
     }
 }
