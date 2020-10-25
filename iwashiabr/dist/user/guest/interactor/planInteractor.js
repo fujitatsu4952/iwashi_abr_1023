@@ -17,8 +17,8 @@ class GuestPlanInteractor {
             subDescription: "",
             price: 0,
             stockNum: 0,
-            deletedAt: undefined,
-            inSale: undefined
+            deletedAt: null,
+            inSale: null
         };
     }
     addMast(planMast) {

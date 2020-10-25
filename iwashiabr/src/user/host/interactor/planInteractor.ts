@@ -18,8 +18,8 @@ export class HostPlanInteractor implements IHostPlanUsecase {
             subDescription: "",
             price: 0,
             stockNum: 0,
-            deletedAt: undefined,
-            inSale: undefined
+            deletedAt: null,
+            inSale: null
         };
     }
     public async addMast(planMast: PlanMast | null): Promise<any> {

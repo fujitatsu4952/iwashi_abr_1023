@@ -18,8 +18,8 @@ class HostRoomInteractor {
             maxPeopleNum: 0,
             stockNum: 0,
             minOrderNum: 0,
-            deletedAt: undefined,
-            inSale: undefined
+            deletedAt: null,
+            inSale: null
         };
     }
     async addMast(roomMast) {

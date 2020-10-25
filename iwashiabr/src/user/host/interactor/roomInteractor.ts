@@ -20,8 +20,8 @@ export class HostRoomInteractor implements IHostRoomUsecase {
             maxPeopleNum: 0,
             stockNum: 0,
             minOrderNum: 0,
-            deletedAt: undefined,
-            inSale: undefined
+            deletedAt: null,
+            inSale: null
         };
     }
     public async addMast(roomMast: RoomMast | null): Promise<any> {
