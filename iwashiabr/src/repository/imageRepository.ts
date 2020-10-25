@@ -18,6 +18,6 @@ export class imageMastRepository {
   // 他の処理も追加可能
   async fetchS3Objects(keyName: string | null | undefined) {
     const res = await sdk.fetchS3Objects({ keyName });
-    return res.data?.fetchS3Objects;
+    return res;
   }
 };

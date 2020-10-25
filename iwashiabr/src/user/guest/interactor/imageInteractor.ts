@@ -9,7 +9,7 @@ export class GuestImageInteractor implements IGuestImageUsecase {
     // ここでimageMastをインスタンス化
     private imageMastRepository = new imageMastRepository()
 
-    public async fetchPlanMasts(keyName: string | null | undefined): Promise<any> {
+    public async fetchImageMasts(keyName: string | null | undefined): Promise<any> {
         return await this.imageMastRepository.fetchS3Objects(keyName)
     }
 }

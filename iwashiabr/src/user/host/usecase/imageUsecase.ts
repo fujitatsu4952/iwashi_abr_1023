@@ -6,5 +6,5 @@ export interface IHostImageUsecase {
     // 作ったものを更新
     updateMast(s3Object: S3Object | null): Promise<any>;
     // これまでの画像一覧を取得
-    fetchPlanMasts(keyName: string | null | undefined): Promise<any | undefined>;
+    fetchImageMasts(keyName: string | null | undefined): Promise<any | undefined>;
 }

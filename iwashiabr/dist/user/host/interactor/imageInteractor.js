@@ -13,7 +13,7 @@ class HostImageInteractor {
     async updateMast(s3Object) {
         return await this.imageMastRepository.updateS3Object(s3Object);
     }
-    async fetchPlanMasts(keyName) {
+    async fetchImageMasts(keyName) {
         return await this.imageMastRepository.fetchS3Objects(keyName);
     }
 }

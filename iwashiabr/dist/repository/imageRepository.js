@@ -16,7 +16,7 @@ class imageMastRepository {
     // 他の処理も追加可能
     async fetchS3Objects(keyName) {
         const res = await sdk.fetchS3Objects({ keyName });
-        return res.data?.fetchS3Objects;
+        return res;
     }
 }
 exports.imageMastRepository = imageMastRepository;

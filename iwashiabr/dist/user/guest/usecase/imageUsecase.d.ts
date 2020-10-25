@@ -1,3 +1,3 @@
 export interface IGuestImageUsecase {
-    fetchPlanMasts(keyName: string | null | undefined): Promise<any | undefined>;
+    fetchImageMasts(keyName: string | null | undefined): Promise<any | undefined>;
 }

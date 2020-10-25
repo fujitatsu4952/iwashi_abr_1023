@@ -7,7 +7,7 @@ class GuestImageInteractor {
         // ここでimageMastをインスタンス化
         this.imageMastRepository = new repository_1.imageMastRepository();
     }
-    async fetchPlanMasts(keyName) {
+    async fetchImageMasts(keyName) {
         return await this.imageMastRepository.fetchS3Objects(keyName);
     }
 }

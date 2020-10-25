@@ -15,7 +15,7 @@ export class HostImageInteractor implements IHostImageUsecase {
     public async updateMast(s3Object: S3Object | null): Promise<any> {
         return await this.imageMastRepository.updateS3Object(s3Object)
     }
-    public async fetchPlanMasts(keyName: string | null | undefined): Promise<any> {
+    public async fetchImageMasts(keyName: string | null | undefined): Promise<any> {
         return await this.imageMastRepository.fetchS3Objects(keyName)
     }
 }
