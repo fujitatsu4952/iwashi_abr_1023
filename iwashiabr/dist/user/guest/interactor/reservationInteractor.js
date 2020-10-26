@@ -8,6 +8,12 @@ class GuestReservationInteractor {
         // ここでplanMastをインスタンス化
         this.reservationRepository = new repository_1.reservationRepository();
     }
+    addObserver(cb) {
+        this.observer.add(cb);
+    }
+    removeObserver(cb) {
+        this.observer.delete(cb);
+    }
     async getBlanc() {
         const reservationID = generateUuid_1.getUniqueID.getUniqueID(3);
         return {

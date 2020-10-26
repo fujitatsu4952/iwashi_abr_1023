@@ -3,3 +3,4 @@ export * from './interactor/roomInteractor';
 export * from './interactor/policyInteractor';
 export * from './interactor/imageInteractor';
 export * from './interactor/reservationInteractor';
+export * from './interactor/reservationCoordinatorInteractor';

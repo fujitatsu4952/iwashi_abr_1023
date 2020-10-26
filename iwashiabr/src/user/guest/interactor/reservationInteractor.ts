@@ -4,9 +4,18 @@ import {
 } from '../../../entity/type'
 import {reservationRepository} from "../../../repository"
 import { getUniqueID } from "../../../util/generateUuid";
+import { Observer } from '../../../index';
 
 
 export class GuestReservationInteractor implements IGuestReservationUsecase {
+    private observer!: Observer;
+    public addObserver(cb: () => void): void {
+        this.observer.add(cb);
+    }
+    public removeObserver(cb: () => void): void {
+        this.observer.delete(cb);
+    }
+
     // ここでplanMastをインスタンス化
     private reservationRepository = new reservationRepository()
     public async getBlanc(): Promise<ReservationObject> {
