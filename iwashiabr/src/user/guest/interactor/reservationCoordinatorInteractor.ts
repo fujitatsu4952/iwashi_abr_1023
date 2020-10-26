@@ -3,6 +3,11 @@ import { Observer } from '../../../index';
 
 export class GuestReservationCoordinatorInteractor {
     private observer!: Observer;
+
+    public async start() {
+        this.observer = new Observer();
+    }
+
     public addObserver(cb: () => void): void {
         this.observer.add(cb);
     }
