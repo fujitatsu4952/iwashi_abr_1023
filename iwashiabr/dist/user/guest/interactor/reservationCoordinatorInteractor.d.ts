@@ -9,6 +9,4 @@ export declare class GuestReservationCoordinatorInteractor {
     addObserver(cb: () => void): void;
     removeObserver(cb: () => void): void;
     updateReservation(reservationObject: ReservationObject): Promise<void>;
-    updateReservationPlan(reservationObject: ReservationObject): Promise<void>;
-    updateReservationRoom(reservationObject: ReservationObject): Promise<void>;
 }
