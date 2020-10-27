@@ -31,6 +31,7 @@ class GuestReservationCoordinatorInteractor {
             console.log("多分呼ばれてない");
             this.reservationObject.planID = planID;
         }
+        console.log("これは呼ばれてるんでしょ？");
         this.observer.emit();
     }
     // storeを更新する
@@ -39,6 +40,7 @@ class GuestReservationCoordinatorInteractor {
             console.log("多分呼ばれてないroom");
             this.reservationObject.roomID = roomID;
         }
+        console.log("これは呼ばれてるんでしょ？room");
         this.observer.emit();
     }
 }
