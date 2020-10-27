@@ -5,7 +5,7 @@ import {
 } from '../../../entity/type'
 export class GuestReservationCoordinatorInteractor {
     private observer!: Observer;
-    public reservationObject: ReservationObject | null = null
+    public reservationObject!: ReservationObject
     public reservationInteractor = new GuestReservationInteractor();
 
     public async start() {
@@ -28,19 +28,19 @@ export class GuestReservationCoordinatorInteractor {
     }
     // storeを更新する
     public async updateReservationPlan( planID: string ): Promise<void> {
-        if(this.reservationObject) {
+        // if(this.reservationObject) {
             console.log("多分呼ばれてない")
             this.reservationObject.planID = planID;
-        }
+        // }
         console.log("これは呼ばれてるんでしょ？")
         this.observer.emit();
     }
     // storeを更新する
     public async updateReservationRoom( roomID: string ): Promise<void> {
-        if(this.reservationObject) {
+        // if(this.reservationObject) {
             console.log("多分呼ばれてないroom")
             this.reservationObject.roomID = roomID;
-        }
+        // }
         console.log("これは呼ばれてるんでしょ？room")
         this.observer.emit();
     }

@@ -5,7 +5,6 @@ const index_1 = require("../../../index");
 const reservationInteractor_1 = require("./reservationInteractor");
 class GuestReservationCoordinatorInteractor {
     constructor() {
-        this.reservationObject = null;
         this.reservationInteractor = new reservationInteractor_1.GuestReservationInteractor();
     }
     async start() {
@@ -27,19 +26,19 @@ class GuestReservationCoordinatorInteractor {
     }
     // storeを更新する
     async updateReservationPlan(planID) {
-        if (this.reservationObject) {
-            console.log("多分呼ばれてない");
-            this.reservationObject.planID = planID;
-        }
+        // if(this.reservationObject) {
+        console.log("多分呼ばれてない");
+        this.reservationObject.planID = planID;
+        // }
         console.log("これは呼ばれてるんでしょ？");
         this.observer.emit();
     }
     // storeを更新する
     async updateReservationRoom(roomID) {
-        if (this.reservationObject) {
-            console.log("多分呼ばれてないroom");
-            this.reservationObject.roomID = roomID;
-        }
+        // if(this.reservationObject) {
+        console.log("多分呼ばれてないroom");
+        this.reservationObject.roomID = roomID;
+        // }
         console.log("これは呼ばれてるんでしょ？room");
         this.observer.emit();
     }
