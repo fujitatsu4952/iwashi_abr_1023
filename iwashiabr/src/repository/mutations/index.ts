@@ -23,6 +23,13 @@ export type Scalars = {
   AWSIPAddress: any;
 };
 
+export type KeyValueObject = {
+  __typename?: 'KeyValueObject';
+  key: Scalars['String'];
+  value?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   fetchPlanMasts: Array<PlanMast>;

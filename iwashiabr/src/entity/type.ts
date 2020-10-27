@@ -20,6 +20,12 @@ export type Scalars = {
   AWSIPAddress: string;
 };
 
+export type KeyValueObject = {
+  key: Scalars['String'];
+  value?: Maybe<Scalars['String']>;
+  description?: Maybe<Scalars['String']>;
+};
+
 export type Query = {
   fetchPlanMasts: Array<PlanMast>;
   fetchPolicyMast: Array<PolicyMast>;
@@ -421,9 +427,10 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
+  KeyValueObject: ResolverTypeWrapper<KeyValueObject>;
+  String: ResolverTypeWrapper<Scalars['String']>;
   Query: ResolverTypeWrapper<{}>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
-  String: ResolverTypeWrapper<Scalars['String']>;
   Mutation: ResolverTypeWrapper<{}>;
   CancelPolicyMast: ResolverTypeWrapper<CancelPolicyMast>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
@@ -466,9 +473,10 @@ export type ResolversTypes = {
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
+  KeyValueObject: KeyValueObject;
+  String: Scalars['String'];
   Query: {};
   ID: Scalars['ID'];
-  String: Scalars['String'];
   Mutation: {};
   CancelPolicyMast: CancelPolicyMast;
   Int: Scalars['Int'];
@@ -507,6 +515,13 @@ export type ResolversParentTypes = {
   AWSURL: Scalars['AWSURL'];
   AWSPhone: Scalars['AWSPhone'];
   AWSIPAddress: Scalars['AWSIPAddress'];
+};
+
+export type KeyValueObjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['KeyValueObject'] = ResolversParentTypes['KeyValueObject']> = {
+  key?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  value?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -689,6 +704,7 @@ export interface AwsipAddressScalarConfig extends GraphQLScalarTypeConfig<Resolv
 }
 
 export type Resolvers<ContextType = any> = {
+  KeyValueObject?: KeyValueObjectResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   CancelPolicyMast?: CancelPolicyMastResolvers<ContextType>;

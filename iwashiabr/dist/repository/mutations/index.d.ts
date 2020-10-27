@@ -24,6 +24,12 @@ export declare type Scalars = {
     AWSPhone: any;
     AWSIPAddress: any;
 };
+export declare type KeyValueObject = {
+    __typename?: 'KeyValueObject';
+    key: Scalars['String'];
+    value?: Maybe<Scalars['String']>;
+    description?: Maybe<Scalars['String']>;
+};
 export declare type Query = {
     __typename?: 'Query';
     fetchPlanMasts: Array<PlanMast>;

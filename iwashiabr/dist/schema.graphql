@@ -1,3 +1,9 @@
+type KeyValueObject {
+  key: String!
+  value: String
+  description: String
+}
+
 type Query {
   fetchPlanMasts(planID: ID): [PlanMast!]!
   fetchPolicyMast(policyID: ID): [PolicyMast!]!
