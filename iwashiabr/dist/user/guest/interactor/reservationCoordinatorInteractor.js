@@ -26,13 +26,13 @@ class GuestReservationCoordinatorInteractor {
         this.observer.emit();
     }
     // storeを更新する
-    async updateReservationPlan(planID) {
-        console.log(planID);
+    async updateReservationPlan(reservationObject) {
+        this.reservationObject = reservationObject;
         this.observer.emit();
     }
     // storeを更新する
-    async updateReservationRoom(roomID) {
-        console.log(roomID);
+    async updateReservationRoom(reservationObject) {
+        this.reservationObject = reservationObject;
         this.observer.emit();
     }
 }

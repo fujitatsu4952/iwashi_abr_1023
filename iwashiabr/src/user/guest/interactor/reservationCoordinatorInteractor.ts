@@ -27,13 +27,13 @@ export class GuestReservationCoordinatorInteractor {
         this.observer.emit();
     }
     // storeを更新する
-    public async updateReservationPlan( planID: string ): Promise<void> {
-        console.log(planID)
+    public async updateReservationPlan( reservationObject: ReservationObject ): Promise<void> {
+        this.reservationObject = reservationObject;
         this.observer.emit();
     }
     // storeを更新する
-    public async updateReservationRoom( roomID: string ): Promise<void> {
-        console.log(roomID)
+    public async updateReservationRoom( reservationObject: ReservationObject ): Promise<void> {
+        this.reservationObject = reservationObject;
         this.observer.emit();
     }
 }
