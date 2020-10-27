@@ -25,5 +25,19 @@ class GuestReservationCoordinatorInteractor {
         this.reservationObject = reservationObject;
         this.observer.emit();
     }
+    // storeを更新する
+    async updateReservationPlan(planID) {
+        if (this.reservationObject) {
+            this.reservationObject.planID = planID;
+        }
+        this.observer.emit();
+    }
+    // storeを更新する
+    async updateReservationRoom(roomID) {
+        if (this.reservationObject) {
+            this.reservationObject.roomID = roomID;
+        }
+        this.observer.emit();
+    }
 }
 exports.GuestReservationCoordinatorInteractor = GuestReservationCoordinatorInteractor;
