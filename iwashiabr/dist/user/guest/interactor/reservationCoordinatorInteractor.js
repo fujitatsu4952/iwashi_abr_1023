@@ -28,6 +28,7 @@ class GuestReservationCoordinatorInteractor {
     // storeを更新する
     async updateReservationPlan(planID) {
         if (this.reservationObject) {
+            console.log("多分呼ばれてない");
             this.reservationObject.planID = planID;
         }
         this.observer.emit();
@@ -35,6 +36,7 @@ class GuestReservationCoordinatorInteractor {
     // storeを更新する
     async updateReservationRoom(roomID) {
         if (this.reservationObject) {
+            console.log("多分呼ばれてないroom");
             this.reservationObject.roomID = roomID;
         }
         this.observer.emit();

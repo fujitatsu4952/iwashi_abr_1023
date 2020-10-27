@@ -29,6 +29,7 @@ export class GuestReservationCoordinatorInteractor {
     // storeを更新する
     public async updateReservationPlan( planID: string ): Promise<void> {
         if(this.reservationObject) {
+            console.log("多分呼ばれてない")
             this.reservationObject.planID = planID;
         }
         this.observer.emit();
@@ -36,6 +37,7 @@ export class GuestReservationCoordinatorInteractor {
     // storeを更新する
     public async updateReservationRoom( roomID: string ): Promise<void> {
         if(this.reservationObject) {
+            console.log("多分呼ばれてないroom")
             this.reservationObject.roomID = roomID;
         }        this.observer.emit();
     }
