@@ -17,4 +17,5 @@ __exportStar(require("./pattern/throttle"), exports);
 __exportStar(require("./pattern/decorator"), exports);
 // util
 __exportStar(require("./util/compare"), exports);
+__exportStar(require("./util/dateUtil"), exports);
 // function
