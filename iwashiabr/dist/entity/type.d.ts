@@ -32,6 +32,15 @@ export declare type KeyValueObject = {
     value?: Maybe<Scalars['String']>;
     description?: Maybe<Scalars['String']>;
 };
+export declare enum DayOfTheWeek {
+    Sun = "SUN",
+    Mon = "MON",
+    Tue = "TUE",
+    Wed = "WED",
+    Thu = "THU",
+    Fri = "FRI",
+    Sat = "SAT"
+}
 export declare type Query = {
     fetchPlanMasts: Array<PlanMast>;
     fetchPolicyMast: Array<PolicyMast>;
@@ -324,6 +333,7 @@ export declare type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {
 export declare type ResolversTypes = {
     KeyValueObject: ResolverTypeWrapper<KeyValueObject>;
     String: ResolverTypeWrapper<Scalars['String']>;
+    DayOfTheWeek: DayOfTheWeek;
     Query: ResolverTypeWrapper<{}>;
     ID: ResolverTypeWrapper<Scalars['ID']>;
     Mutation: ResolverTypeWrapper<{}>;

@@ -4,6 +4,16 @@ type KeyValueObject {
   description: String
 }
 
+enum DayOfTheWeek {
+  SUN
+  MON
+  TUE
+  WED
+  THU
+  FRI
+  SAT
+}
+
 type Query {
   fetchPlanMasts(planID: ID): [PlanMast!]!
   fetchPolicyMast(policyID: ID): [PolicyMast!]!

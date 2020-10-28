@@ -30,6 +30,16 @@ export type KeyValueObject = {
   description?: Maybe<Scalars['String']>;
 };
 
+export enum DayOfTheWeek {
+  Sun = 'SUN',
+  Mon = 'MON',
+  Tue = 'TUE',
+  Wed = 'WED',
+  Thu = 'THU',
+  Fri = 'FRI',
+  Sat = 'SAT'
+}
+
 export type Query = {
   __typename?: 'Query';
   fetchPlanMasts: Array<PlanMast>;
