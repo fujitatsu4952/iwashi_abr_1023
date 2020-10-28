@@ -14,6 +14,12 @@ enum DayOfTheWeek {
   SAT
 }
 
+enum TimeZone {
+  Asia__Tokyo
+  America__New_York
+  Europe__London
+}
+
 type Query {
   fetchPlanMasts(planID: ID): [PlanMast!]!
   fetchPolicyMast(policyID: ID): [PolicyMast!]!

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DayOfTheWeek = void 0;
+exports.TimeZone = exports.DayOfTheWeek = void 0;
 var DayOfTheWeek;
 (function (DayOfTheWeek) {
     DayOfTheWeek["Sun"] = "SUN";
@@ -11,3 +11,9 @@ var DayOfTheWeek;
     DayOfTheWeek["Fri"] = "FRI";
     DayOfTheWeek["Sat"] = "SAT";
 })(DayOfTheWeek = exports.DayOfTheWeek || (exports.DayOfTheWeek = {}));
+var TimeZone;
+(function (TimeZone) {
+    TimeZone["AsiaTokyo"] = "Asia__Tokyo";
+    TimeZone["AmericaNewYork"] = "America__New_York";
+    TimeZone["EuropeLondon"] = "Europe__London";
+})(TimeZone = exports.TimeZone || (exports.TimeZone = {}));

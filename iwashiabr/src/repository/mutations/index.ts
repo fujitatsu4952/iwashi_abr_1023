@@ -40,6 +40,12 @@ export enum DayOfTheWeek {
   Sat = 'SAT'
 }
 
+export enum TimeZone {
+  AsiaTokyo = 'Asia__Tokyo',
+  AmericaNewYork = 'America__New_York',
+  EuropeLondon = 'Europe__London'
+}
+
 export type Query = {
   __typename?: 'Query';
   fetchPlanMasts: Array<PlanMast>;

@@ -41,6 +41,11 @@ export declare enum DayOfTheWeek {
     Fri = "FRI",
     Sat = "SAT"
 }
+export declare enum TimeZone {
+    AsiaTokyo = "Asia__Tokyo",
+    AmericaNewYork = "America__New_York",
+    EuropeLondon = "Europe__London"
+}
 export declare type Query = {
     fetchPlanMasts: Array<PlanMast>;
     fetchPolicyMast: Array<PolicyMast>;
@@ -334,6 +339,7 @@ export declare type ResolversTypes = {
     KeyValueObject: ResolverTypeWrapper<KeyValueObject>;
     String: ResolverTypeWrapper<Scalars['String']>;
     DayOfTheWeek: DayOfTheWeek;
+    TimeZone: TimeZone;
     Query: ResolverTypeWrapper<{}>;
     ID: ResolverTypeWrapper<Scalars['ID']>;
     Mutation: ResolverTypeWrapper<{}>;
