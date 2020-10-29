@@ -24,12 +24,36 @@ export declare type Scalars = {
     AWSPhone: any;
     AWSIPAddress: any;
 };
+export declare type DateStatusObject = {
+    __typename?: 'DateStatusObject';
+    date: Scalars['AWSDate'];
+    isStayable: Scalars['Boolean'];
+    price?: Maybe<PriceObject>;
+};
+export declare type DateStatusObjectInput = {
+    date: Scalars['AWSDate'];
+    isStayable: Scalars['Boolean'];
+    price?: Maybe<PriceObjectInput>;
+};
 export declare type KeyValueObject = {
     __typename?: 'KeyValueObject';
     key: Scalars['String'];
     value?: Maybe<Scalars['String']>;
     description?: Maybe<Scalars['String']>;
 };
+export declare type PriceObject = {
+    __typename?: 'PriceObject';
+    currencyType: CurrencyType;
+    amount: Scalars['Int'];
+};
+export declare type PriceObjectInput = {
+    currencyType: CurrencyType;
+    amount: Scalars['Int'];
+};
+export declare enum CurrencyType {
+    Jpy = "jpy",
+    Usd = "usd"
+}
 export declare enum DayOfTheWeek {
     Sun = "SUN",
     Mon = "MON",

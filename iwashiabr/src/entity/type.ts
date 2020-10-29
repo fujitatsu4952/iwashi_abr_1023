@@ -20,11 +20,38 @@ export type Scalars = {
   AWSIPAddress: string;
 };
 
+export type DateStatusObject = {
+  date: Scalars['AWSDate'];
+  isStayable: Scalars['Boolean'];
+  price?: Maybe<PriceObject>;
+};
+
+export type DateStatusObjectInput = {
+  date: Scalars['AWSDate'];
+  isStayable: Scalars['Boolean'];
+  price?: Maybe<PriceObjectInput>;
+};
+
 export type KeyValueObject = {
   key: Scalars['String'];
   value?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
 };
+
+export type PriceObject = {
+  currencyType: CurrencyType;
+  amount: Scalars['Int'];
+};
+
+export type PriceObjectInput = {
+  currencyType: CurrencyType;
+  amount: Scalars['Int'];
+};
+
+export enum CurrencyType {
+  Jpy = 'jpy',
+  Usd = 'usd'
+}
 
 export enum DayOfTheWeek {
   Sun = 'SUN',
@@ -443,22 +470,27 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
+  DateStatusObject: ResolverTypeWrapper<DateStatusObject>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  DateStatusObjectInput: DateStatusObjectInput;
   KeyValueObject: ResolverTypeWrapper<KeyValueObject>;
   String: ResolverTypeWrapper<Scalars['String']>;
+  PriceObject: ResolverTypeWrapper<PriceObject>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
+  PriceObjectInput: PriceObjectInput;
+  CurrencyType: CurrencyType;
   DayOfTheWeek: DayOfTheWeek;
   TimeZone: TimeZone;
   Query: ResolverTypeWrapper<{}>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Mutation: ResolverTypeWrapper<{}>;
   CancelPolicyMast: ResolverTypeWrapper<CancelPolicyMast>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
   CancelPolicyMastInput: CancelPolicyMastInput;
   ImageMast: ResolverTypeWrapper<ImageMast>;
   ImageMastInput: ImageMastInput;
   PlanImageMappingTemplate: ResolverTypeWrapper<PlanImageMappingTemplate>;
   PlanImageMappingTemplateInput: PlanImageMappingTemplateInput;
   PlanMast: ResolverTypeWrapper<PlanMast>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   PlanMastInput: PlanMastInput;
   PlanStatus: ResolverTypeWrapper<PlanStatus>;
   PlanStatusInput: PlanStatusInput;
@@ -491,20 +523,24 @@ export type ResolversTypes = {
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
+  DateStatusObject: DateStatusObject;
+  Boolean: Scalars['Boolean'];
+  DateStatusObjectInput: DateStatusObjectInput;
   KeyValueObject: KeyValueObject;
   String: Scalars['String'];
+  PriceObject: PriceObject;
+  Int: Scalars['Int'];
+  PriceObjectInput: PriceObjectInput;
   Query: {};
   ID: Scalars['ID'];
   Mutation: {};
   CancelPolicyMast: CancelPolicyMast;
-  Int: Scalars['Int'];
   CancelPolicyMastInput: CancelPolicyMastInput;
   ImageMast: ImageMast;
   ImageMastInput: ImageMastInput;
   PlanImageMappingTemplate: PlanImageMappingTemplate;
   PlanImageMappingTemplateInput: PlanImageMappingTemplateInput;
   PlanMast: PlanMast;
-  Boolean: Scalars['Boolean'];
   PlanMastInput: PlanMastInput;
   PlanStatus: PlanStatus;
   PlanStatusInput: PlanStatusInput;
@@ -535,10 +571,23 @@ export type ResolversParentTypes = {
   AWSIPAddress: Scalars['AWSIPAddress'];
 };
 
+export type DateStatusObjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['DateStatusObject'] = ResolversParentTypes['DateStatusObject']> = {
+  date?: Resolver<ResolversTypes['AWSDate'], ParentType, ContextType>;
+  isStayable?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  price?: Resolver<Maybe<ResolversTypes['PriceObject']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type KeyValueObjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['KeyValueObject'] = ResolversParentTypes['KeyValueObject']> = {
   key?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   value?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type PriceObjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['PriceObject'] = ResolversParentTypes['PriceObject']> = {
+  currencyType?: Resolver<ResolversTypes['CurrencyType'], ParentType, ContextType>;
+  amount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -722,7 +771,9 @@ export interface AwsipAddressScalarConfig extends GraphQLScalarTypeConfig<Resolv
 }
 
 export type Resolvers<ContextType = any> = {
+  DateStatusObject?: DateStatusObjectResolvers<ContextType>;
   KeyValueObject?: KeyValueObjectResolvers<ContextType>;
+  PriceObject?: PriceObjectResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   CancelPolicyMast?: CancelPolicyMastResolvers<ContextType>;

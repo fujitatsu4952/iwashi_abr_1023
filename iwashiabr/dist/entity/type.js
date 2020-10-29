@@ -1,6 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TimeZone = exports.DayOfTheWeek = void 0;
+exports.TimeZone = exports.DayOfTheWeek = exports.CurrencyType = void 0;
+var CurrencyType;
+(function (CurrencyType) {
+    CurrencyType["Jpy"] = "jpy";
+    CurrencyType["Usd"] = "usd";
+})(CurrencyType = exports.CurrencyType || (exports.CurrencyType = {}));
 var DayOfTheWeek;
 (function (DayOfTheWeek) {
     DayOfTheWeek["Sun"] = "SUN";

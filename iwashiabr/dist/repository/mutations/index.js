@@ -3,9 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSdk = exports.FetchS3ObjectsDocument = exports.AddS3ObjectDocument = exports.UpdateS3ObjectDocument = exports.FetchRoomMastsDocument = exports.AddRoomMastDocument = exports.UpdateRoomMastDocument = exports.FetchReservationObjectsDocument = exports.AddReservationObjectDocument = exports.UpdateReservationObjectDocument = exports.FetchPolicyMastDocument = exports.AddPolicyMastDocument = exports.UpdatePolicyMastDocument = exports.FetchPlanMastsDocument = exports.AddPlanMastDocument = exports.UpdatePlanMastDocument = exports.TimeZone = exports.DayOfTheWeek = void 0;
+exports.getSdk = exports.FetchS3ObjectsDocument = exports.AddS3ObjectDocument = exports.UpdateS3ObjectDocument = exports.FetchRoomMastsDocument = exports.AddRoomMastDocument = exports.UpdateRoomMastDocument = exports.FetchReservationObjectsDocument = exports.AddReservationObjectDocument = exports.UpdateReservationObjectDocument = exports.FetchPolicyMastDocument = exports.AddPolicyMastDocument = exports.UpdatePolicyMastDocument = exports.FetchPlanMastsDocument = exports.AddPlanMastDocument = exports.UpdatePlanMastDocument = exports.TimeZone = exports.DayOfTheWeek = exports.CurrencyType = void 0;
 const graphql_1 = require("graphql");
 const graphql_tag_1 = __importDefault(require("graphql-tag"));
+var CurrencyType;
+(function (CurrencyType) {
+    CurrencyType["Jpy"] = "jpy";
+    CurrencyType["Usd"] = "usd";
+})(CurrencyType = exports.CurrencyType || (exports.CurrencyType = {}));
 var DayOfTheWeek;
 (function (DayOfTheWeek) {
     DayOfTheWeek["Sun"] = "SUN";
