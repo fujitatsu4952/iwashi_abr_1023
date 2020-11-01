@@ -1,5 +1,6 @@
 import { Scalars, DayOfTheWeek, TimeZone } from '../../entity/type';
 export declare function getDateRangeArray(startDt: Scalars['AWSDate'], endDt: Scalars['AWSDate']): Scalars['AWSDate'][];
+export declare function getTimeRangeArray(startTime: Scalars['AWSDate'], endTime: Scalars['AWSDate']): Scalars['AWSDate'][];
 export declare function getDateTimeRangeArray(startAt: string, endAt: string, stepMin: number): Scalars['AWSDate'][];
 export declare function getDayOfTheWeek(date: Scalars['AWSDate']): DayOfTheWeek;
 /**

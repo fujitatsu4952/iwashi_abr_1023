@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addMinutes = exports.addDate = exports.getSubOfDateAMinusDateB = exports.getSubOfEndOfDates = exports.getEndOfDateMilli = exports.DateTimeToTime = exports.DateTimeToDate = exports.getCurrentDateTime = exports.getCurrentDate = exports.getMilliSecBySpecificDateAndTime = exports.getCurrentTimeStamp = exports.format = exports.getDayOfTheWeek = exports.getDateTimeRangeArray = exports.getDateRangeArray = void 0;
+exports.addMinutes = exports.addDate = exports.getSubOfDateAMinusDateB = exports.getSubOfEndOfDates = exports.getEndOfDateMilli = exports.DateTimeToTime = exports.DateTimeToDate = exports.getCurrentDateTime = exports.getCurrentDate = exports.getMilliSecBySpecificDateAndTime = exports.getCurrentTimeStamp = exports.format = exports.getDayOfTheWeek = exports.getDateTimeRangeArray = exports.getTimeRangeArray = exports.getDateRangeArray = void 0;
 const dayjs = require("dayjs");
 const type_1 = require("../../entity/type");
 function getDateRangeArray(startDt, endDt) {
@@ -17,6 +17,20 @@ function getDateRangeArray(startDt, endDt) {
     return dateArray;
 }
 exports.getDateRangeArray = getDateRangeArray;
+function getTimeRangeArray(startTime, endTime) {
+    if (startTime > endTime) {
+        console.log('ErrorCode.chillnn_400_startDtIsOverEndDt');
+    }
+    const timeArray = [];
+    let currentTime = dayjs(startTime);
+    const stopTime = dayjs(endTime);
+    while (currentTime <= stopTime) {
+        timeArray.push(dayjs(currentTime).format("YYYY-MM-DD-hh:mm"));
+        currentTime = dayjs(currentTime).add(30, 'minute');
+    }
+    return timeArray;
+}
+exports.getTimeRangeArray = getTimeRangeArray;
 function getDateTimeRangeArray(startAt, endAt, stepMin) {
     if (startAt > endAt) {
         console.log('ErrorCode.chillnn_400_startDtIsOverEndDt');

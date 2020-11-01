@@ -18,6 +18,23 @@ export function getDateRangeArray(
     return dateArray;
 }
 
+export function getTimeRangeArray(
+    startTime: Scalars['AWSDate'],
+    endTime: Scalars['AWSDate'],
+): Scalars['AWSDate'][] {
+    if (startTime > endTime) {
+        console.log('ErrorCode.chillnn_400_startDtIsOverEndDt');
+    }
+    const timeArray = [];
+    let currentTime = dayjs(startTime);
+    const stopTime = dayjs(endTime);
+    while (currentTime <= stopTime) {
+        timeArray.push(dayjs(currentTime).format("YYYY-MM-DD-hh:mm"));
+        currentTime = dayjs(currentTime).add(30, 'minute');
+    }
+    return timeArray;
+}
+
 export function getDateTimeRangeArray(
     startAt: string,
     endAt: string,
