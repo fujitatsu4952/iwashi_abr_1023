@@ -29,7 +29,7 @@ export function getTimeRangeArray(
     let currentTime = dayjs(startTime);
     const stopTime = dayjs(endTime);
     while (currentTime <= stopTime) {
-        timeArray.push(dayjs(currentTime).format("YYYY-MM-DD-hh:mm"));
+        timeArray.push(dayjs(currentTime).format("YYYY-MM-DD-HH:mm"));
         currentTime = dayjs(currentTime).add(30, 'minute');
     }
     return timeArray;
