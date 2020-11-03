@@ -16,3 +16,4 @@ __exportStar(require("./interactor/policyInteractor"), exports);
 __exportStar(require("./interactor/imageInteractor"), exports);
 __exportStar(require("./interactor/reservationInteractor"), exports);
 __exportStar(require("./interactor/reservationCoordinatorInteractor"), exports);
+__exportStar(require("./interactor/planStatusInteractor"), exports);
