@@ -49,6 +49,7 @@ enum TimeZone {
 
 type Query {
   fetchPlanMasts(planID: ID): [PlanMast!]!
+  fetchPlanStatus(Time: String, planID: ID): [PlanStatus!]!
   fetchPolicyMast(policyID: ID): [PolicyMast!]!
   fetchReservationObjects(reservationID: ID): [ReservationObject!]!
   fetchRoomMasts(roomID: ID): [RoomMast!]!
@@ -57,11 +58,13 @@ type Query {
 
 type Mutation {
   addPlanMast(input: PlanMastInput): PlanMast
+  addPlanStatus(input: [PlanStatusInput]): PlanStatus
   addPolicyMast(input: PolicyMastInput): PolicyMast
   addReservationObject(input: ReservationObjectInput): ReservationObject
   addRoomMast(input: RoomMastInput): RoomMast
   addS3Object(input: S3ObjectInput): S3Object
   updatePlanMast(input: PlanMastInput): PlanMast
+  updatePlanStatus(input: [PlanStatusInput]): PlanStatus
   updatePolicyMast(input: PolicyMastInput): PolicyMast
   updateReservationObject(input: ReservationObjectInput): ReservationObject
   updateRoomMast(input: RoomMastInput): RoomMast

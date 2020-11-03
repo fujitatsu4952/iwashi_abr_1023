@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSdk = exports.FetchS3ObjectsDocument = exports.AddS3ObjectDocument = exports.UpdateS3ObjectDocument = exports.FetchRoomMastsDocument = exports.AddRoomMastDocument = exports.UpdateRoomMastDocument = exports.FetchReservationObjectsDocument = exports.AddReservationObjectDocument = exports.UpdateReservationObjectDocument = exports.FetchPolicyMastDocument = exports.AddPolicyMastDocument = exports.UpdatePolicyMastDocument = exports.FetchPlanMastsDocument = exports.AddPlanMastDocument = exports.UpdatePlanMastDocument = exports.TimeZone = exports.DayOfTheWeek = exports.CurrencyType = void 0;
+exports.getSdk = exports.FetchS3ObjectsDocument = exports.AddS3ObjectDocument = exports.UpdateS3ObjectDocument = exports.FetchRoomMastsDocument = exports.AddRoomMastDocument = exports.UpdateRoomMastDocument = exports.FetchReservationObjectsDocument = exports.AddReservationObjectDocument = exports.UpdateReservationObjectDocument = exports.FetchPolicyMastDocument = exports.AddPolicyMastDocument = exports.UpdatePolicyMastDocument = exports.FetchPlanStatusDocument = exports.AddPlanStatusDocument = exports.UpdatePlanStatusDocument = exports.FetchPlanMastsDocument = exports.AddPlanMastDocument = exports.UpdatePlanMastDocument = exports.TimeZone = exports.DayOfTheWeek = exports.CurrencyType = void 0;
 const graphql_1 = require("graphql");
 const graphql_tag_1 = __importDefault(require("graphql-tag"));
 var CurrencyType;
@@ -59,6 +59,39 @@ exports.FetchPlanMastsDocument = graphql_tag_1.default `
     stockNum
     deletedAt
     inSale
+  }
+}
+    `;
+exports.UpdatePlanStatusDocument = graphql_tag_1.default `
+    mutation updatePlanStatus($planStatus: [PlanStatusInput!]) {
+  updatePlanStatus(input: $planStatus) {
+    planID
+    Time
+    soldNum
+    availableNum
+    isAvailabe
+  }
+}
+    `;
+exports.AddPlanStatusDocument = graphql_tag_1.default `
+    mutation addPlanStatus($planStatus: [PlanStatusInput!]) {
+  addPlanStatus(input: $planStatus) {
+    planID
+    Time
+    soldNum
+    availableNum
+    isAvailabe
+  }
+}
+    `;
+exports.FetchPlanStatusDocument = graphql_tag_1.default `
+    query fetchPlanStatus($Time: String!, $planID: ID!) {
+  fetchPlanStatus(Time: $Time, planID: $planID) {
+    planID
+    Time
+    soldNum
+    availableNum
+    isAvailabe
   }
 }
     `;
@@ -187,6 +220,15 @@ function getSdk(client, withWrapper = defaultWrapper) {
         },
         fetchPlanMasts(variables) {
             return withWrapper(() => client.rawRequest(graphql_1.print(exports.FetchPlanMastsDocument), variables));
+        },
+        updatePlanStatus(variables) {
+            return withWrapper(() => client.rawRequest(graphql_1.print(exports.UpdatePlanStatusDocument), variables));
+        },
+        addPlanStatus(variables) {
+            return withWrapper(() => client.rawRequest(graphql_1.print(exports.AddPlanStatusDocument), variables));
+        },
+        fetchPlanStatus(variables) {
+            return withWrapper(() => client.rawRequest(graphql_1.print(exports.FetchPlanStatusDocument), variables));
         },
         updatePolicyMast(variables) {
             return withWrapper(() => client.rawRequest(graphql_1.print(exports.UpdatePolicyMastDocument), variables));

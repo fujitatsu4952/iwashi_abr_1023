@@ -25,7 +25,7 @@ class GuestReservationInteractor {
             roomNum: 0,
             planNum: 0,
             peopleNum: 0,
-            policyID: '',
+            policyID: '174da08566682',
             totalPrice: 0,
             guestName: null,
             guestEmail: null,

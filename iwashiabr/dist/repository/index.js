@@ -15,3 +15,4 @@ __exportStar(require("./policyRepository"), exports);
 __exportStar(require("./roomRepository"), exports);
 __exportStar(require("./imageRepository"), exports);
 __exportStar(require("./reservationRepository"), exports);
+__exportStar(require("./planStatusRepository"), exports);

@@ -71,12 +71,17 @@ export declare enum TimeZone {
 export declare type Query = {
     __typename?: 'Query';
     fetchPlanMasts: Array<PlanMast>;
+    fetchPlanStatus: Array<PlanStatus>;
     fetchPolicyMast: Array<PolicyMast>;
     fetchReservationObjects: Array<ReservationObject>;
     fetchRoomMasts: Array<RoomMast>;
     fetchS3Objects: Array<S3Object>;
 };
 export declare type QueryFetchPlanMastsArgs = {
+    planID?: Maybe<Scalars['ID']>;
+};
+export declare type QueryFetchPlanStatusArgs = {
+    Time?: Maybe<Scalars['String']>;
     planID?: Maybe<Scalars['ID']>;
 };
 export declare type QueryFetchPolicyMastArgs = {
@@ -94,11 +99,13 @@ export declare type QueryFetchS3ObjectsArgs = {
 export declare type Mutation = {
     __typename?: 'Mutation';
     addPlanMast?: Maybe<PlanMast>;
+    addPlanStatus?: Maybe<PlanStatus>;
     addPolicyMast?: Maybe<PolicyMast>;
     addReservationObject?: Maybe<ReservationObject>;
     addRoomMast?: Maybe<RoomMast>;
     addS3Object?: Maybe<S3Object>;
     updatePlanMast?: Maybe<PlanMast>;
+    updatePlanStatus?: Maybe<PlanStatus>;
     updatePolicyMast?: Maybe<PolicyMast>;
     updateReservationObject?: Maybe<ReservationObject>;
     updateRoomMast?: Maybe<RoomMast>;
@@ -106,6 +113,9 @@ export declare type Mutation = {
 };
 export declare type MutationAddPlanMastArgs = {
     input?: Maybe<PlanMastInput>;
+};
+export declare type MutationAddPlanStatusArgs = {
+    input?: Maybe<Array<Maybe<PlanStatusInput>>>;
 };
 export declare type MutationAddPolicyMastArgs = {
     input?: Maybe<PolicyMastInput>;
@@ -121,6 +131,9 @@ export declare type MutationAddS3ObjectArgs = {
 };
 export declare type MutationUpdatePlanMastArgs = {
     input?: Maybe<PlanMastInput>;
+};
+export declare type MutationUpdatePlanStatusArgs = {
+    input?: Maybe<Array<Maybe<PlanStatusInput>>>;
 };
 export declare type MutationUpdatePolicyMastArgs = {
     input?: Maybe<PolicyMastInput>;
@@ -369,6 +382,37 @@ export declare type FetchPlanMastsQuery = ({
         __typename?: 'PlanMast';
     } & Pick<PlanMast, 'planID' | 'name' | 'description' | 'subDescription' | 'price' | 'stockNum' | 'deletedAt' | 'inSale'>)>;
 });
+export declare type UpdatePlanStatusMutationVariables = Exact<{
+    planStatus?: Maybe<Array<PlanStatusInput>>;
+}>;
+export declare type UpdatePlanStatusMutation = ({
+    __typename?: 'Mutation';
+} & {
+    updatePlanStatus?: Maybe<({
+        __typename?: 'PlanStatus';
+    } & Pick<PlanStatus, 'planID' | 'Time' | 'soldNum' | 'availableNum' | 'isAvailabe'>)>;
+});
+export declare type AddPlanStatusMutationVariables = Exact<{
+    planStatus?: Maybe<Array<PlanStatusInput>>;
+}>;
+export declare type AddPlanStatusMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addPlanStatus?: Maybe<({
+        __typename?: 'PlanStatus';
+    } & Pick<PlanStatus, 'planID' | 'Time' | 'soldNum' | 'availableNum' | 'isAvailabe'>)>;
+});
+export declare type FetchPlanStatusQueryVariables = Exact<{
+    Time: Scalars['String'];
+    planID: Scalars['ID'];
+}>;
+export declare type FetchPlanStatusQuery = ({
+    __typename?: 'Query';
+} & {
+    fetchPlanStatus: Array<({
+        __typename?: 'PlanStatus';
+    } & Pick<PlanStatus, 'planID' | 'Time' | 'soldNum' | 'availableNum' | 'isAvailabe'>)>;
+});
 export declare type UpdatePolicyMastMutationVariables = Exact<{
     policyMast?: Maybe<PolicyMastInput>;
 }>;
@@ -492,6 +536,9 @@ export declare type FetchS3ObjectsQuery = ({
 export declare const UpdatePlanMastDocument: import("graphql").DocumentNode;
 export declare const AddPlanMastDocument: import("graphql").DocumentNode;
 export declare const FetchPlanMastsDocument: import("graphql").DocumentNode;
+export declare const UpdatePlanStatusDocument: import("graphql").DocumentNode;
+export declare const AddPlanStatusDocument: import("graphql").DocumentNode;
+export declare const FetchPlanStatusDocument: import("graphql").DocumentNode;
 export declare const UpdatePolicyMastDocument: import("graphql").DocumentNode;
 export declare const AddPolicyMastDocument: import("graphql").DocumentNode;
 export declare const FetchPolicyMastDocument: import("graphql").DocumentNode;
@@ -528,6 +575,31 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
         planID?: string | null | undefined;
     }> | undefined): Promise<{
         data?: FetchPlanMastsQuery | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    updatePlanStatus(variables?: Exact<{
+        planStatus?: PlanStatusInput[] | null | undefined;
+    }> | undefined): Promise<{
+        data?: UpdatePlanStatusMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    addPlanStatus(variables?: Exact<{
+        planStatus?: PlanStatusInput[] | null | undefined;
+    }> | undefined): Promise<{
+        data?: AddPlanStatusMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    fetchPlanStatus(variables: FetchPlanStatusQueryVariables): Promise<{
+        data?: FetchPlanStatusQuery | undefined;
         extensions?: any;
         headers: Headers;
         status: number;

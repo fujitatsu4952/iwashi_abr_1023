@@ -6,7 +6,6 @@ import {reservationRepository} from "../../../repository"
 import { getUniqueID } from "../../../util/generateUuid";
 import { Observer } from '../../../index';
 
-
 export class GuestReservationInteractor implements IGuestReservationUsecase {
     private observer!: Observer;
     public addObserver(cb: () => void): void {
@@ -29,7 +28,7 @@ export class GuestReservationInteractor implements IGuestReservationUsecase {
             roomNum: 0,
             planNum: 0,
             peopleNum: 0,
-            policyID: '',
+            policyID: '174da08566682',
             totalPrice: 0,
             guestName: null,
             guestEmail: null,
