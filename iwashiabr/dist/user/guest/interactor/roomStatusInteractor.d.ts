@@ -4,5 +4,5 @@ export declare class GuestRoomStatusInteractor implements IGuestRoomStatusUsecas
     private roomStatusRepository;
     private roomMastRepository;
     updateStatus(roomStatus: RoomStatus[]): Promise<void>;
-    fetchStatus(Time: string, roomID: string): Promise<any | null | undefined>;
+    fetchStatus(Time: string, roomID: string): Promise<RoomStatus[] | undefined>;
 }

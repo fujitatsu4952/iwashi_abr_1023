@@ -14,7 +14,12 @@ class roomStatusRepository {
     }
     async fetchRoomStatus(Time, roomID) {
         const res = (await sdk.fetchRoomStatus({ Time, roomID })).data;
-        return res;
+        if (res && res.fetchRoomStatus) {
+            return res.fetchRoomStatus;
+        }
+        else {
+            return null;
+        }
     }
 }
 exports.roomStatusRepository = roomStatusRepository;

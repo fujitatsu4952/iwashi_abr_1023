@@ -13,12 +13,12 @@ class GuestRoomStatusInteractor {
     }
     async fetchStatus(Time, roomID) {
         const tempStockNum = await (this.roomStatusRepository.fetchRoomStatus(Time, roomID));
-        if (!tempStockNum) {
-            return (await this.roomMastRepository.fetchRoomMasts(roomID)).data?.fetchRoomMasts[0].stockNum;
-        }
-        else {
-            return 0;
-        }
+        return tempStockNum || undefined;
+        // if(!tempStockNum) {
+        //     return (await this.roomMastRepository.fetchRoomMasts(roomID)).data?.fetchRoomMasts[0].stockNum
+        // } else {
+        //     return 0
+        // }
     }
 }
 exports.GuestRoomStatusInteractor = GuestRoomStatusInteractor;
