@@ -5,3 +5,4 @@ export * from './interactor/imageInteractor';
 export * from './interactor/reservationInteractor';
 export * from './interactor/reservationCoordinatorInteractor';
 export * from './interactor/planStatusInteractor';
+export * from './interactor/roomStatusInteractor';

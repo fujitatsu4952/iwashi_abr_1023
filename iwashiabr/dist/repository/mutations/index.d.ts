@@ -75,6 +75,7 @@ export declare type Query = {
     fetchPolicyMast: Array<PolicyMast>;
     fetchReservationObjects: Array<ReservationObject>;
     fetchRoomMasts: Array<RoomMast>;
+    fetchRoomStatus: Array<RoomStatus>;
     fetchS3Objects: Array<S3Object>;
 };
 export declare type QueryFetchPlanMastsArgs = {
@@ -93,6 +94,10 @@ export declare type QueryFetchReservationObjectsArgs = {
 export declare type QueryFetchRoomMastsArgs = {
     roomID?: Maybe<Scalars['ID']>;
 };
+export declare type QueryFetchRoomStatusArgs = {
+    Time?: Maybe<Scalars['String']>;
+    roomID?: Maybe<Scalars['ID']>;
+};
 export declare type QueryFetchS3ObjectsArgs = {
     keyName?: Maybe<Scalars['String']>;
 };
@@ -103,12 +108,14 @@ export declare type Mutation = {
     addPolicyMast?: Maybe<PolicyMast>;
     addReservationObject?: Maybe<ReservationObject>;
     addRoomMast?: Maybe<RoomMast>;
+    addRoomStatus?: Maybe<RoomStatus>;
     addS3Object?: Maybe<S3Object>;
     updatePlanMast?: Maybe<PlanMast>;
     updatePlanStatus?: Maybe<PlanStatus>;
     updatePolicyMast?: Maybe<PolicyMast>;
     updateReservationObject?: Maybe<ReservationObject>;
     updateRoomMast?: Maybe<RoomMast>;
+    updateRoomStatus?: Maybe<RoomStatus>;
     updateS3Object?: Maybe<S3Object>;
 };
 export declare type MutationAddPlanMastArgs = {
@@ -125,6 +132,9 @@ export declare type MutationAddReservationObjectArgs = {
 };
 export declare type MutationAddRoomMastArgs = {
     input?: Maybe<RoomMastInput>;
+};
+export declare type MutationAddRoomStatusArgs = {
+    input?: Maybe<Array<Maybe<RoomStatusInput>>>;
 };
 export declare type MutationAddS3ObjectArgs = {
     input?: Maybe<S3ObjectInput>;
@@ -143,6 +153,9 @@ export declare type MutationUpdateReservationObjectArgs = {
 };
 export declare type MutationUpdateRoomMastArgs = {
     input?: Maybe<RoomMastInput>;
+};
+export declare type MutationUpdateRoomStatusArgs = {
+    input?: Maybe<Array<Maybe<RoomStatusInput>>>;
 };
 export declare type MutationUpdateS3ObjectArgs = {
     input?: Maybe<S3ObjectInput>;
@@ -503,6 +516,37 @@ export declare type FetchRoomMastsQuery = ({
         __typename?: 'RoomMast';
     } & Pick<RoomMast, 'roomID' | 'name' | 'description' | 'subDescription' | 'maxPeopleNum' | 'stockNum' | 'minOrderNum' | 'deletedAt' | 'inSale'>)>;
 });
+export declare type UpdateRoomStatusMutationVariables = Exact<{
+    roomStatus?: Maybe<Array<RoomStatusInput>>;
+}>;
+export declare type UpdateRoomStatusMutation = ({
+    __typename?: 'Mutation';
+} & {
+    updateRoomStatus?: Maybe<({
+        __typename?: 'RoomStatus';
+    } & Pick<RoomStatus, 'roomID' | 'Time' | 'soldNum' | 'availableNum' | 'isAvailabe'>)>;
+});
+export declare type AddRoomStatusMutationVariables = Exact<{
+    roomStatus?: Maybe<Array<RoomStatusInput>>;
+}>;
+export declare type AddRoomStatusMutation = ({
+    __typename?: 'Mutation';
+} & {
+    addRoomStatus?: Maybe<({
+        __typename?: 'RoomStatus';
+    } & Pick<RoomStatus, 'roomID' | 'Time' | 'soldNum' | 'availableNum' | 'isAvailabe'>)>;
+});
+export declare type FetchRoomStatusQueryVariables = Exact<{
+    Time: Scalars['String'];
+    roomID: Scalars['ID'];
+}>;
+export declare type FetchRoomStatusQuery = ({
+    __typename?: 'Query';
+} & {
+    fetchRoomStatus: Array<({
+        __typename?: 'RoomStatus';
+    } & Pick<RoomStatus, 'roomID' | 'Time' | 'soldNum' | 'availableNum' | 'isAvailabe'>)>;
+});
 export declare type UpdateS3ObjectMutationVariables = Exact<{
     s3Object?: Maybe<S3ObjectInput>;
 }>;
@@ -548,6 +592,9 @@ export declare const FetchReservationObjectsDocument: import("graphql").Document
 export declare const UpdateRoomMastDocument: import("graphql").DocumentNode;
 export declare const AddRoomMastDocument: import("graphql").DocumentNode;
 export declare const FetchRoomMastsDocument: import("graphql").DocumentNode;
+export declare const UpdateRoomStatusDocument: import("graphql").DocumentNode;
+export declare const AddRoomStatusDocument: import("graphql").DocumentNode;
+export declare const FetchRoomStatusDocument: import("graphql").DocumentNode;
 export declare const UpdateS3ObjectDocument: import("graphql").DocumentNode;
 export declare const AddS3ObjectDocument: import("graphql").DocumentNode;
 export declare const FetchS3ObjectsDocument: import("graphql").DocumentNode;
@@ -681,6 +728,31 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
         roomID?: string | null | undefined;
     }> | undefined): Promise<{
         data?: FetchRoomMastsQuery | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    updateRoomStatus(variables?: Exact<{
+        roomStatus?: RoomStatusInput[] | null | undefined;
+    }> | undefined): Promise<{
+        data?: UpdateRoomStatusMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    addRoomStatus(variables?: Exact<{
+        roomStatus?: RoomStatusInput[] | null | undefined;
+    }> | undefined): Promise<{
+        data?: AddRoomStatusMutation | undefined;
+        extensions?: any;
+        headers: Headers;
+        status: number;
+        errors?: GraphQLError[] | undefined;
+    }>;
+    fetchRoomStatus(variables: FetchRoomStatusQueryVariables): Promise<{
+        data?: FetchRoomStatusQuery | undefined;
         extensions?: any;
         headers: Headers;
         status: number;

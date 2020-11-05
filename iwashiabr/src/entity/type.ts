@@ -75,6 +75,7 @@ export type Query = {
   fetchPolicyMast: Array<PolicyMast>;
   fetchReservationObjects: Array<ReservationObject>;
   fetchRoomMasts: Array<RoomMast>;
+  fetchRoomStatus: Array<RoomStatus>;
   fetchS3Objects: Array<S3Object>;
 };
 
@@ -105,6 +106,12 @@ export type QueryFetchRoomMastsArgs = {
 };
 
 
+export type QueryFetchRoomStatusArgs = {
+  Time?: Maybe<Scalars['String']>;
+  roomID?: Maybe<Scalars['ID']>;
+};
+
+
 export type QueryFetchS3ObjectsArgs = {
   keyName?: Maybe<Scalars['String']>;
 };
@@ -115,12 +122,14 @@ export type Mutation = {
   addPolicyMast?: Maybe<PolicyMast>;
   addReservationObject?: Maybe<ReservationObject>;
   addRoomMast?: Maybe<RoomMast>;
+  addRoomStatus?: Maybe<RoomStatus>;
   addS3Object?: Maybe<S3Object>;
   updatePlanMast?: Maybe<PlanMast>;
   updatePlanStatus?: Maybe<PlanStatus>;
   updatePolicyMast?: Maybe<PolicyMast>;
   updateReservationObject?: Maybe<ReservationObject>;
   updateRoomMast?: Maybe<RoomMast>;
+  updateRoomStatus?: Maybe<RoomStatus>;
   updateS3Object?: Maybe<S3Object>;
 };
 
@@ -147,6 +156,11 @@ export type MutationAddReservationObjectArgs = {
 
 export type MutationAddRoomMastArgs = {
   input?: Maybe<RoomMastInput>;
+};
+
+
+export type MutationAddRoomStatusArgs = {
+  input?: Maybe<Array<Maybe<RoomStatusInput>>>;
 };
 
 
@@ -177,6 +191,11 @@ export type MutationUpdateReservationObjectArgs = {
 
 export type MutationUpdateRoomMastArgs = {
   input?: Maybe<RoomMastInput>;
+};
+
+
+export type MutationUpdateRoomStatusArgs = {
+  input?: Maybe<Array<Maybe<RoomStatusInput>>>;
 };
 
 
@@ -616,6 +635,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   fetchPolicyMast?: Resolver<Array<ResolversTypes['PolicyMast']>, ParentType, ContextType, RequireFields<QueryFetchPolicyMastArgs, never>>;
   fetchReservationObjects?: Resolver<Array<ResolversTypes['ReservationObject']>, ParentType, ContextType, RequireFields<QueryFetchReservationObjectsArgs, never>>;
   fetchRoomMasts?: Resolver<Array<ResolversTypes['RoomMast']>, ParentType, ContextType, RequireFields<QueryFetchRoomMastsArgs, never>>;
+  fetchRoomStatus?: Resolver<Array<ResolversTypes['RoomStatus']>, ParentType, ContextType, RequireFields<QueryFetchRoomStatusArgs, never>>;
   fetchS3Objects?: Resolver<Array<ResolversTypes['S3Object']>, ParentType, ContextType, RequireFields<QueryFetchS3ObjectsArgs, never>>;
 };
 
@@ -625,12 +645,14 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   addPolicyMast?: Resolver<Maybe<ResolversTypes['PolicyMast']>, ParentType, ContextType, RequireFields<MutationAddPolicyMastArgs, never>>;
   addReservationObject?: Resolver<Maybe<ResolversTypes['ReservationObject']>, ParentType, ContextType, RequireFields<MutationAddReservationObjectArgs, never>>;
   addRoomMast?: Resolver<Maybe<ResolversTypes['RoomMast']>, ParentType, ContextType, RequireFields<MutationAddRoomMastArgs, never>>;
+  addRoomStatus?: Resolver<Maybe<ResolversTypes['RoomStatus']>, ParentType, ContextType, RequireFields<MutationAddRoomStatusArgs, never>>;
   addS3Object?: Resolver<Maybe<ResolversTypes['S3Object']>, ParentType, ContextType, RequireFields<MutationAddS3ObjectArgs, never>>;
   updatePlanMast?: Resolver<Maybe<ResolversTypes['PlanMast']>, ParentType, ContextType, RequireFields<MutationUpdatePlanMastArgs, never>>;
   updatePlanStatus?: Resolver<Maybe<ResolversTypes['PlanStatus']>, ParentType, ContextType, RequireFields<MutationUpdatePlanStatusArgs, never>>;
   updatePolicyMast?: Resolver<Maybe<ResolversTypes['PolicyMast']>, ParentType, ContextType, RequireFields<MutationUpdatePolicyMastArgs, never>>;
   updateReservationObject?: Resolver<Maybe<ResolversTypes['ReservationObject']>, ParentType, ContextType, RequireFields<MutationUpdateReservationObjectArgs, never>>;
   updateRoomMast?: Resolver<Maybe<ResolversTypes['RoomMast']>, ParentType, ContextType, RequireFields<MutationUpdateRoomMastArgs, never>>;
+  updateRoomStatus?: Resolver<Maybe<ResolversTypes['RoomStatus']>, ParentType, ContextType, RequireFields<MutationUpdateRoomStatusArgs, never>>;
   updateS3Object?: Resolver<Maybe<ResolversTypes['S3Object']>, ParentType, ContextType, RequireFields<MutationUpdateS3ObjectArgs, never>>;
 };
 

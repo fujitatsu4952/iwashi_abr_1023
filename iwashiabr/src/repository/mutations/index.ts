@@ -82,6 +82,7 @@ export type Query = {
   fetchPolicyMast: Array<PolicyMast>;
   fetchReservationObjects: Array<ReservationObject>;
   fetchRoomMasts: Array<RoomMast>;
+  fetchRoomStatus: Array<RoomStatus>;
   fetchS3Objects: Array<S3Object>;
 };
 
@@ -112,6 +113,12 @@ export type QueryFetchRoomMastsArgs = {
 };
 
 
+export type QueryFetchRoomStatusArgs = {
+  Time?: Maybe<Scalars['String']>;
+  roomID?: Maybe<Scalars['ID']>;
+};
+
+
 export type QueryFetchS3ObjectsArgs = {
   keyName?: Maybe<Scalars['String']>;
 };
@@ -123,12 +130,14 @@ export type Mutation = {
   addPolicyMast?: Maybe<PolicyMast>;
   addReservationObject?: Maybe<ReservationObject>;
   addRoomMast?: Maybe<RoomMast>;
+  addRoomStatus?: Maybe<RoomStatus>;
   addS3Object?: Maybe<S3Object>;
   updatePlanMast?: Maybe<PlanMast>;
   updatePlanStatus?: Maybe<PlanStatus>;
   updatePolicyMast?: Maybe<PolicyMast>;
   updateReservationObject?: Maybe<ReservationObject>;
   updateRoomMast?: Maybe<RoomMast>;
+  updateRoomStatus?: Maybe<RoomStatus>;
   updateS3Object?: Maybe<S3Object>;
 };
 
@@ -155,6 +164,11 @@ export type MutationAddReservationObjectArgs = {
 
 export type MutationAddRoomMastArgs = {
   input?: Maybe<RoomMastInput>;
+};
+
+
+export type MutationAddRoomStatusArgs = {
+  input?: Maybe<Array<Maybe<RoomStatusInput>>>;
 };
 
 
@@ -185,6 +199,11 @@ export type MutationUpdateReservationObjectArgs = {
 
 export type MutationUpdateRoomMastArgs = {
   input?: Maybe<RoomMastInput>;
+};
+
+
+export type MutationUpdateRoomStatusArgs = {
+  input?: Maybe<Array<Maybe<RoomStatusInput>>>;
 };
 
 
@@ -628,6 +647,46 @@ export type FetchRoomMastsQuery = (
   )> }
 );
 
+export type UpdateRoomStatusMutationVariables = Exact<{
+  roomStatus?: Maybe<Array<RoomStatusInput>>;
+}>;
+
+
+export type UpdateRoomStatusMutation = (
+  { __typename?: 'Mutation' }
+  & { updateRoomStatus?: Maybe<(
+    { __typename?: 'RoomStatus' }
+    & Pick<RoomStatus, 'roomID' | 'Time' | 'soldNum' | 'availableNum' | 'isAvailabe'>
+  )> }
+);
+
+export type AddRoomStatusMutationVariables = Exact<{
+  roomStatus?: Maybe<Array<RoomStatusInput>>;
+}>;
+
+
+export type AddRoomStatusMutation = (
+  { __typename?: 'Mutation' }
+  & { addRoomStatus?: Maybe<(
+    { __typename?: 'RoomStatus' }
+    & Pick<RoomStatus, 'roomID' | 'Time' | 'soldNum' | 'availableNum' | 'isAvailabe'>
+  )> }
+);
+
+export type FetchRoomStatusQueryVariables = Exact<{
+  Time: Scalars['String'];
+  roomID: Scalars['ID'];
+}>;
+
+
+export type FetchRoomStatusQuery = (
+  { __typename?: 'Query' }
+  & { fetchRoomStatus: Array<(
+    { __typename?: 'RoomStatus' }
+    & Pick<RoomStatus, 'roomID' | 'Time' | 'soldNum' | 'availableNum' | 'isAvailabe'>
+  )> }
+);
+
 export type UpdateS3ObjectMutationVariables = Exact<{
   s3Object?: Maybe<S3ObjectInput>;
 }>;
@@ -821,6 +880,39 @@ export const FetchRoomMastsDocument = gql`
   }
 }
     `;
+export const UpdateRoomStatusDocument = gql`
+    mutation updateRoomStatus($roomStatus: [RoomStatusInput!]) {
+  updateRoomStatus(input: $roomStatus) {
+    roomID
+    Time
+    soldNum
+    availableNum
+    isAvailabe
+  }
+}
+    `;
+export const AddRoomStatusDocument = gql`
+    mutation addRoomStatus($roomStatus: [RoomStatusInput!]) {
+  addRoomStatus(input: $roomStatus) {
+    roomID
+    Time
+    soldNum
+    availableNum
+    isAvailabe
+  }
+}
+    `;
+export const FetchRoomStatusDocument = gql`
+    query fetchRoomStatus($Time: String!, $roomID: ID!) {
+  fetchRoomStatus(Time: $Time, roomID: $roomID) {
+    roomID
+    Time
+    soldNum
+    availableNum
+    isAvailabe
+  }
+}
+    `;
 export const UpdateS3ObjectDocument = gql`
     mutation updateS3Object($s3Object: S3ObjectInput) {
   updateS3Object(input: $s3Object) {
@@ -901,6 +993,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     fetchRoomMasts(variables?: FetchRoomMastsQueryVariables): Promise<{ data?: FetchRoomMastsQuery | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper(() => client.rawRequest<FetchRoomMastsQuery>(print(FetchRoomMastsDocument), variables));
+    },
+    updateRoomStatus(variables?: UpdateRoomStatusMutationVariables): Promise<{ data?: UpdateRoomStatusMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<UpdateRoomStatusMutation>(print(UpdateRoomStatusDocument), variables));
+    },
+    addRoomStatus(variables?: AddRoomStatusMutationVariables): Promise<{ data?: AddRoomStatusMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<AddRoomStatusMutation>(print(AddRoomStatusDocument), variables));
+    },
+    fetchRoomStatus(variables: FetchRoomStatusQueryVariables): Promise<{ data?: FetchRoomStatusQuery | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
+        return withWrapper(() => client.rawRequest<FetchRoomStatusQuery>(print(FetchRoomStatusDocument), variables));
     },
     updateS3Object(variables?: UpdateS3ObjectMutationVariables): Promise<{ data?: UpdateS3ObjectMutation | undefined; extensions?: any; headers: Headers; status: number; errors?: GraphQLError[] | undefined; }> {
         return withWrapper(() => client.rawRequest<UpdateS3ObjectMutation>(print(UpdateS3ObjectDocument), variables));

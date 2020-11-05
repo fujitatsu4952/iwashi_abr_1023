@@ -53,6 +53,7 @@ type Query {
   fetchPolicyMast(policyID: ID): [PolicyMast!]!
   fetchReservationObjects(reservationID: ID): [ReservationObject!]!
   fetchRoomMasts(roomID: ID): [RoomMast!]!
+  fetchRoomStatus(Time: String, roomID: ID): [RoomStatus!]!
   fetchS3Objects(keyName: String): [S3Object!]!
 }
 
@@ -62,12 +63,14 @@ type Mutation {
   addPolicyMast(input: PolicyMastInput): PolicyMast
   addReservationObject(input: ReservationObjectInput): ReservationObject
   addRoomMast(input: RoomMastInput): RoomMast
+  addRoomStatus(input: [RoomStatusInput]): RoomStatus
   addS3Object(input: S3ObjectInput): S3Object
   updatePlanMast(input: PlanMastInput): PlanMast
   updatePlanStatus(input: [PlanStatusInput]): PlanStatus
   updatePolicyMast(input: PolicyMastInput): PolicyMast
   updateReservationObject(input: ReservationObjectInput): ReservationObject
   updateRoomMast(input: RoomMastInput): RoomMast
+  updateRoomStatus(input: [RoomStatusInput]): RoomStatus
   updateS3Object(input: S3ObjectInput): S3Object
 }
 

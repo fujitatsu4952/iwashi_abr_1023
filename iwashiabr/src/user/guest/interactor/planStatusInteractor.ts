@@ -14,6 +14,6 @@ export class GuestPlanStatusInteractor implements IGuestPlanStatusUsecase {
         await this.planStatusRepository.updatePlanStatus(planStatus);
     }
     public async fetchStatus(Time: string, planID: string): Promise<any | null | undefined> {
-        return (await this.planStatusRepository.fetchPlanStatus(Time, planID)).data;
+        return await this.planStatusRepository.fetchPlanStatus(Time, planID);
     }
 }

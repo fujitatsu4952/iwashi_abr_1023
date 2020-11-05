@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSdk = exports.FetchS3ObjectsDocument = exports.AddS3ObjectDocument = exports.UpdateS3ObjectDocument = exports.FetchRoomMastsDocument = exports.AddRoomMastDocument = exports.UpdateRoomMastDocument = exports.FetchReservationObjectsDocument = exports.AddReservationObjectDocument = exports.UpdateReservationObjectDocument = exports.FetchPolicyMastDocument = exports.AddPolicyMastDocument = exports.UpdatePolicyMastDocument = exports.FetchPlanStatusDocument = exports.AddPlanStatusDocument = exports.UpdatePlanStatusDocument = exports.FetchPlanMastsDocument = exports.AddPlanMastDocument = exports.UpdatePlanMastDocument = exports.TimeZone = exports.DayOfTheWeek = exports.CurrencyType = void 0;
+exports.getSdk = exports.FetchS3ObjectsDocument = exports.AddS3ObjectDocument = exports.UpdateS3ObjectDocument = exports.FetchRoomStatusDocument = exports.AddRoomStatusDocument = exports.UpdateRoomStatusDocument = exports.FetchRoomMastsDocument = exports.AddRoomMastDocument = exports.UpdateRoomMastDocument = exports.FetchReservationObjectsDocument = exports.AddReservationObjectDocument = exports.UpdateReservationObjectDocument = exports.FetchPolicyMastDocument = exports.AddPolicyMastDocument = exports.UpdatePolicyMastDocument = exports.FetchPlanStatusDocument = exports.AddPlanStatusDocument = exports.UpdatePlanStatusDocument = exports.FetchPlanMastsDocument = exports.AddPlanMastDocument = exports.UpdatePlanMastDocument = exports.TimeZone = exports.DayOfTheWeek = exports.CurrencyType = void 0;
 const graphql_1 = require("graphql");
 const graphql_tag_1 = __importDefault(require("graphql-tag"));
 var CurrencyType;
@@ -180,6 +180,39 @@ exports.FetchRoomMastsDocument = graphql_tag_1.default `
   }
 }
     `;
+exports.UpdateRoomStatusDocument = graphql_tag_1.default `
+    mutation updateRoomStatus($roomStatus: [RoomStatusInput!]) {
+  updateRoomStatus(input: $roomStatus) {
+    roomID
+    Time
+    soldNum
+    availableNum
+    isAvailabe
+  }
+}
+    `;
+exports.AddRoomStatusDocument = graphql_tag_1.default `
+    mutation addRoomStatus($roomStatus: [RoomStatusInput!]) {
+  addRoomStatus(input: $roomStatus) {
+    roomID
+    Time
+    soldNum
+    availableNum
+    isAvailabe
+  }
+}
+    `;
+exports.FetchRoomStatusDocument = graphql_tag_1.default `
+    query fetchRoomStatus($Time: String!, $roomID: ID!) {
+  fetchRoomStatus(Time: $Time, roomID: $roomID) {
+    roomID
+    Time
+    soldNum
+    availableNum
+    isAvailabe
+  }
+}
+    `;
 exports.UpdateS3ObjectDocument = graphql_tag_1.default `
     mutation updateS3Object($s3Object: S3ObjectInput) {
   updateS3Object(input: $s3Object) {
@@ -256,6 +289,15 @@ function getSdk(client, withWrapper = defaultWrapper) {
         },
         fetchRoomMasts(variables) {
             return withWrapper(() => client.rawRequest(graphql_1.print(exports.FetchRoomMastsDocument), variables));
+        },
+        updateRoomStatus(variables) {
+            return withWrapper(() => client.rawRequest(graphql_1.print(exports.UpdateRoomStatusDocument), variables));
+        },
+        addRoomStatus(variables) {
+            return withWrapper(() => client.rawRequest(graphql_1.print(exports.AddRoomStatusDocument), variables));
+        },
+        fetchRoomStatus(variables) {
+            return withWrapper(() => client.rawRequest(graphql_1.print(exports.FetchRoomStatusDocument), variables));
         },
         updateS3Object(variables) {
             return withWrapper(() => client.rawRequest(graphql_1.print(exports.UpdateS3ObjectDocument), variables));
