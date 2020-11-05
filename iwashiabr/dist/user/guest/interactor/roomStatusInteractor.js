@@ -11,7 +11,7 @@ class GuestRoomStatusInteractor {
         await this.roomStatusRepository.updateRoomStatus(roomStatus);
     }
     async fetchStatus(Time, roomID) {
-        return await (await this.roomStatusRepository.fetchRoomStatus(Time, roomID)).data;
+        return await (this.roomStatusRepository.fetchRoomStatus(Time, roomID));
     }
 }
 exports.GuestRoomStatusInteractor = GuestRoomStatusInteractor;

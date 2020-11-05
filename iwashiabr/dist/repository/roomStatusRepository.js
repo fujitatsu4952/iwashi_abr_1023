@@ -13,7 +13,7 @@ class roomStatusRepository {
         await sdk.addRoomStatus({ roomStatus });
     }
     async fetchRoomStatus(Time, roomID) {
-        const res = await sdk.fetchRoomStatus({ Time, roomID });
+        const res = await (await sdk.fetchRoomStatus({ Time, roomID })).data;
         return res;
     }
 }
