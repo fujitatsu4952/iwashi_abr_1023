@@ -11,8 +11,7 @@ class GuestPlanStatusInteractor {
         await this.planStatusRepository.updatePlanStatus(planStatus);
     }
     async fetchStatus(Time, planID) {
-        return await this.planStatusRepository.fetchPlanStatus(Time, planID);
-        // return await this.planStatusRepository.fetchPlanStatus(Time, planID);
+        return (await this.planStatusRepository.fetchPlanStatus(Time, planID)).data;
     }
 }
 exports.GuestPlanStatusInteractor = GuestPlanStatusInteractor;
