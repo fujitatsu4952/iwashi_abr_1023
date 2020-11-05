@@ -15,7 +15,7 @@ export class roomStatusRepository {
   }
 
   async fetchRoomStatus(Time: string, roomID: string) {
-    const res = await (await sdk.fetchRoomStatus({ Time, roomID })).data;
+    const res = (await sdk.fetchRoomStatus({ Time, roomID })).data;
     return res;
   }
 };

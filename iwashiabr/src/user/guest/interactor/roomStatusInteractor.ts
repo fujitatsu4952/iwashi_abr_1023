@@ -14,6 +14,11 @@ export class GuestRoomStatusInteractor implements IGuestRoomStatusUsecase {
         await this.roomStatusRepository.updateRoomStatus(roomStatus);
     }
     public async fetchStatus(Time: string, roomID: string): Promise<any | null | undefined> {
-        return await (this.roomStatusRepository.fetchRoomStatus(Time, roomID));
+        const tempStockNum = await (this.roomStatusRepository.fetchRoomStatus(Time, roomID));
+        if(tempStockNum) {
+            return 10
+        } else {
+            return 0
+        }
     }
 }
