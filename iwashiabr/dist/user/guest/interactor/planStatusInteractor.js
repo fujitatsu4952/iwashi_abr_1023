@@ -7,16 +7,17 @@ class GuestPlanStatusInteractor {
     constructor() {
         // ここでplanStatusRepositoryをインスタンス化
         this.planStatusRepository = new repository_1.planStatusRepository();
-        this.planSotckNumCalc = new index_1.planStockNum();
+        // これはUtilをインスタンス化
+        this.planStockNumCalc = new index_1.planStockNum();
     }
     async updateStatus(resevationObject) {
-        await this.planSotckNumCalc.planStockUpdate(resevationObject);
+        await this.planStockNumCalc.planStockUpdate(resevationObject);
     }
     async fetchStatus(time, planID) {
-        return await this.planSotckNumCalc.planStockNumSingle(time, planID);
+        return await this.planStockNumCalc.planStockNumSingle(time, planID);
     }
     async fetchStatusWithinRange(dateTimeRange, planID) {
-        return await this.planSotckNumCalc.planStockNum(dateTimeRange, planID);
+        return await this.planStockNumCalc.planStockNum(dateTimeRange, planID);
     }
 }
 exports.GuestPlanStatusInteractor = GuestPlanStatusInteractor;

@@ -25,10 +25,15 @@ class roomStockNum {
         }
         //もしデータ構造がまだ作られていなかったら = まだ一つも予約されていなかったら
         if (stockNumList.length < 1) {
+            console.log("もしデータ構造がまだ作られていなかったら");
+            console.log(roomMastStockNum);
             return roomMastStockNum;
         }
         else { //プラン構造が作られているもの
+            console.log('プラン構造が作られているもの');
             const maxSoldNum = Math.max.apply(null, stockNumList);
+            console.log(roomMastStockNum);
+            console.log(maxSoldNum);
             return (roomMastStockNum - maxSoldNum);
         }
     }

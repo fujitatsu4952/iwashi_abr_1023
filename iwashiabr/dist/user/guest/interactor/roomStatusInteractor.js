@@ -8,16 +8,16 @@ class GuestRoomStatusInteractor {
         // ここでroomStatusRepositoryをインスタンス化
         this.roomStatusRepository = new repository_1.roomStatusRepository();
         // これはUtilをインスタンス化
-        this.roomSotckNumCalc = new index_1.roomStockNum();
+        this.roomStockNumCalc = new index_1.roomStockNum();
     }
     async updateStatus(resevationObject) {
-        await this.roomSotckNumCalc.roomStockUpdate(resevationObject);
+        await this.roomStockNumCalc.roomStockUpdate(resevationObject);
     }
     async fetchStatus(time, roomID) {
-        return await this.roomSotckNumCalc.roomStockNumSingle(time, roomID);
+        return await this.roomStockNumCalc.roomStockNumSingle(time, roomID);
     }
     async fetchStatusWithinRange(dateTimeRange, roomID) {
-        return await this.roomSotckNumCalc.roomStockNum(dateTimeRange, roomID);
+        return await this.roomStockNumCalc.roomStockNum(dateTimeRange, roomID);
     }
 }
 exports.GuestRoomStatusInteractor = GuestRoomStatusInteractor;
