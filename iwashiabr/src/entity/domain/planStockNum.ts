@@ -11,9 +11,12 @@ export class PlanStockNum {
     private planInteractor = new planMastRepository();
 
     private stockNumList: number[]=[]
+    private planMastStockNum= 0
     public async PlanStockNum(dateTimeRange: Scalars["AWSDate"][], planID: string): Promise<number> {
-
-        const planMastStockNum = (await this.planInteractor.fetchPlanMasts(planID))![0].stockNum
+        let planMastStockNumTemp = (await this.planInteractor.fetchPlanMasts(planID))
+        if(planMastStockNumTemp) {
+            this.planMastStockNum = planMastStockNumTemp[0].stockNum
+        } 
 
         for (let i = 0; i < dateTimeRange.length; i++) {
             const tempStockNum  = (await this.planStatusRepository.fetchPlanStatus(dateTimeRange[i], planID));
@@ -24,10 +27,10 @@ export class PlanStockNum {
         }
         //もしデータ構造がまだ作られていなかったら = まだ一つも予約されていなかったら
         if (this.stockNumList.length < 1) {
-            return planMastStockNum;
+            return this.planMastStockNum;
         } else {
             const maxSoldNum = Math.max.apply(null, this.stockNumList);
-            return (planMastStockNum - maxSoldNum);
+            return (this.planMastStockNum - maxSoldNum);
         }
     }
 }
