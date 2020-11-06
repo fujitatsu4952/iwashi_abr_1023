@@ -80,6 +80,7 @@ export class roomStockNum {
             }
         }
         console.log(roomStatusList)
+        console.log("これは呼べれんのかおい！")
         await this.roomStatusRepository.updateRoomStatus(roomStatusList)
     }
 }
