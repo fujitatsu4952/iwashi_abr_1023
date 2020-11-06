@@ -1,7 +1,13 @@
 import {
-    Scalars
+    Scalars, ReservationObject, RoomStatus
 } from '../../entity'
 import { roomMastRepository, roomStatusRepository} from "../../repository"
+import { getTimeRangeArray } from '../../index';
+
+interface reservationRoomItemTemp {
+    roomID: Scalars['ID'];
+    roomNum: number;
+}
 
 export class roomStockNum {
     // ここでroomStatusRepositoryをインスタンス化
@@ -48,5 +54,26 @@ export class roomStockNum {
         } else {
             return roomMastStockNum
         }
+    }
+
+    public async roomStockUpdate(reservationObject: ReservationObject) {
+        let roomStatusList: RoomStatus[] = []
+        const timeRangeArray:Scalars['AWSDateTime'][] = getTimeRangeArray(reservationObject.checkInTime, reservationObject.checkOutTime)
+        const reservationRoom = JSON.parse(
+            reservationObject.roomID
+        ) as reservationRoomItemTemp[];
+        for (let i = 0; i < timeRangeArray.length; i++) {
+            for (let m = 0; m < reservationRoom.length; m++) {
+                let roomStatus: RoomStatus = {
+                    roomID: reservationRoom[m].roomID,
+                    Time: timeRangeArray[i],
+                    soldNum: reservationRoom[m].roomNum,
+                    availableNum: null,
+                    isAvailabe: null
+                };
+                roomStatusList.push(roomStatus);
+            }
+        }
+        await this.roomStatusRepository.updateRoomStatus(roomStatusList)
     }
 }

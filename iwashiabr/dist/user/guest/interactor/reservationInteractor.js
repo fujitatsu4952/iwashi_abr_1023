@@ -1,18 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GuestReservationInteractor = void 0;
+const index_1 = require("./../index");
 const repository_1 = require("../../../repository");
 const generateUuid_1 = require("../../../util/generateUuid");
 class GuestReservationInteractor {
     constructor() {
+        this.planStatusInteractor = new index_1.GuestPlanStatusInteractor();
+        this.roomStatusInteractor = new index_1.GuestRoomStatusInteractor();
         // ここでplanMastをインスタンス化
         this.reservationRepository = new repository_1.reservationRepository();
-    }
-    addObserver(cb) {
-        this.observer.add(cb);
-    }
-    removeObserver(cb) {
-        this.observer.delete(cb);
     }
     async getBlanc() {
         const reservationID = generateUuid_1.getUniqueID.getUniqueID(3);
@@ -34,7 +31,8 @@ class GuestReservationInteractor {
         };
     }
     async addMast(reservationObject) {
-        return await this.reservationRepository.addReservation(reservationObject);
+        await [this.planStatusInteractor.updateStatus(reservationObject), this.roomStatusInteractor.updateStatus(reservationObject)];
+        await this.reservationRepository.addReservation(reservationObject);
     }
     ;
     async updateMast(reservationObject) {

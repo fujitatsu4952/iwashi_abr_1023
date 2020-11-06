@@ -7,16 +7,6 @@ class GuestReservationCoordinatorInteractor {
     constructor() {
         this.reservationObject = null;
         this.reservationInteractor = new reservationInteractor_1.GuestReservationInteractor();
-        // // storeを更新する
-        // public async updateReservationPlan( reservationObject: ReservationObject ): Promise<void> {
-        //     this.reservationObject = reservationObject;
-        //     this.observer.emit();
-        // }
-        // // storeを更新する
-        // public async updateReservationRoom( reservationObject: ReservationObject ): Promise<void> {
-        //     this.reservationObject = reservationObject;
-        //     this.observer.emit();
-        // }
     }
     async start() {
         this.observer = new index_1.Observer();

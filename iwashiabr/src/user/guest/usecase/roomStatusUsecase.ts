@@ -1,8 +1,8 @@
-import { RoomStatus, Scalars } from '../../../entity';
+import { RoomStatus, Scalars, ReservationObject } from '../../../entity';
 
 export interface IGuestRoomStatusUsecase {
     // 作ったものを更新
-    updateStatus(roomStatus: RoomStatus[]): Promise<void>;
+    updateStatus(reservationObject: ReservationObject): Promise<void>;
     // 在庫情報を取得
     fetchStatus(time: Scalars['AWSDate'], roomID: Scalars['ID']): Promise<number>;
 

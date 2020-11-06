@@ -26,14 +26,4 @@ export class GuestReservationCoordinatorInteractor {
         this.reservationObject = reservationObject;
         this.observer.emit();
     }
-    // // storeを更新する
-    // public async updateReservationPlan( reservationObject: ReservationObject ): Promise<void> {
-    //     this.reservationObject = reservationObject;
-    //     this.observer.emit();
-    // }
-    // // storeを更新する
-    // public async updateReservationRoom( reservationObject: ReservationObject ): Promise<void> {
-    //     this.reservationObject = reservationObject;
-    //     this.observer.emit();
-    // }
 }

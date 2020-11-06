@@ -1,5 +1,5 @@
 import {IGuestPlanStatusUsecase} from "../usecase/planStatusUsecase";
-import { PlanStatus } from '../../../entity/type'
+import { PlanStatus, ReservationObject } from '../../../entity/type'
 import { planStatusRepository } from "../../../repository"
 import { planStockNum } from "../../../index";
 
@@ -10,8 +10,8 @@ export class GuestPlanStatusInteractor implements IGuestPlanStatusUsecase {
     private planStatusRepository = new planStatusRepository()
     private planSotckNumCalc = new planStockNum();
 
-    public async updateStatus(planStatus: PlanStatus[]): Promise<void> {
-        await this.planStatusRepository.updatePlanStatus(planStatus);
+    public async updateStatus(resevationObject: ReservationObject): Promise<void> {
+        await this.planSotckNumCalc.planStockUpdate(resevationObject);
     }
     public async fetchStatus(time: string, planID: string): Promise<number> {
         return await this.planSotckNumCalc.planStockNumSingle(time, planID)

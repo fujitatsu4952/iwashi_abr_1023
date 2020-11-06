@@ -10,8 +10,8 @@ class GuestRoomStatusInteractor {
         // これはUtilをインスタンス化
         this.roomSotckNumCalc = new index_1.roomStockNum();
     }
-    async updateStatus(roomStatus) {
-        await this.roomStatusRepository.updateRoomStatus(roomStatus);
+    async updateStatus(resevationObject) {
+        await this.roomSotckNumCalc.roomStockUpdate(resevationObject);
     }
     async fetchStatus(time, roomID) {
         return await this.roomSotckNumCalc.roomStockNumSingle(time, roomID);

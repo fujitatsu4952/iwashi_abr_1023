@@ -2,18 +2,13 @@ import {IGuestReservationUsecase} from "../usecase/reservationUsecase";
 import {
     ReservationObject
 } from '../../../entity/type'
+import {GuestPlanStatusInteractor, GuestRoomStatusInteractor} from './../index'
 import {reservationRepository} from "../../../repository"
 import { getUniqueID } from "../../../util/generateUuid";
-import { Observer } from '../../../index';
 
 export class GuestReservationInteractor implements IGuestReservationUsecase {
-    private observer!: Observer;
-    public addObserver(cb: () => void): void {
-        this.observer.add(cb);
-    }
-    public removeObserver(cb: () => void): void {
-        this.observer.delete(cb);
-    }
+    private planStatusInteractor = new GuestPlanStatusInteractor();
+    private roomStatusInteractor = new GuestRoomStatusInteractor()
 
     // ここでplanMastをインスタンス化
     private reservationRepository = new reservationRepository()
@@ -36,8 +31,9 @@ export class GuestReservationInteractor implements IGuestReservationUsecase {
             canceledAt: null
         };
     }
-    public async addMast(reservationObject: ReservationObject | null): Promise<any> {
-        return await this.reservationRepository.addReservation(reservationObject)
+    public async addMast(reservationObject: ReservationObject): Promise<void> {
+        await [this.planStatusInteractor.updateStatus(reservationObject), this.roomStatusInteractor.updateStatus(reservationObject)];
+        await this.reservationRepository.addReservation(reservationObject);
     };
     public async updateMast(reservationObject: ReservationObject | null): Promise<any> {
         return await this.reservationRepository.updateReservation(reservationObject)

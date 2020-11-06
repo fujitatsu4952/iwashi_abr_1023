@@ -9,8 +9,8 @@ class GuestPlanStatusInteractor {
         this.planStatusRepository = new repository_1.planStatusRepository();
         this.planSotckNumCalc = new index_1.planStockNum();
     }
-    async updateStatus(planStatus) {
-        await this.planStatusRepository.updatePlanStatus(planStatus);
+    async updateStatus(resevationObject) {
+        await this.planSotckNumCalc.planStockUpdate(resevationObject);
     }
     async fetchStatus(time, planID) {
         return await this.planSotckNumCalc.planStockNumSingle(time, planID);

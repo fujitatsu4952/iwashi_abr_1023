@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.planStockNum = void 0;
 const repository_1 = require("../../repository");
+const index_1 = require("../../index");
 class planStockNum {
     constructor() {
         // ここでplanStatusRepositoryをインスタンス化
@@ -44,6 +45,24 @@ class planStockNum {
         else {
             return planMastStockNum;
         }
+    }
+    async planStockUpdate(reservationObject) {
+        let planStatusList = [];
+        const timeRangeArray = index_1.getTimeRangeArray(reservationObject.checkInTime, reservationObject.checkOutTime);
+        const reservationPlan = JSON.parse(reservationObject.planID);
+        for (let i = 0; i < timeRangeArray.length; i++) {
+            for (let m = 0; m < reservationPlan.length; m++) {
+                let planStatus = {
+                    planID: reservationPlan[m].planID,
+                    Time: timeRangeArray[i],
+                    soldNum: reservationPlan[m].planNum,
+                    availableNum: null,
+                    isAvailabe: null
+                };
+                planStatusList.push(planStatus);
+            }
+        }
+        await this.planStatusRepository.updatePlanStatus(planStatusList);
     }
 }
 exports.planStockNum = planStockNum;

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.roomStockNum = void 0;
 const repository_1 = require("../../repository");
+const index_1 = require("../../index");
 class roomStockNum {
     constructor() {
         // ここでroomStatusRepositoryをインスタンス化
@@ -44,6 +45,24 @@ class roomStockNum {
         else {
             return roomMastStockNum;
         }
+    }
+    async roomStockUpdate(reservationObject) {
+        let roomStatusList = [];
+        const timeRangeArray = index_1.getTimeRangeArray(reservationObject.checkInTime, reservationObject.checkOutTime);
+        const reservationRoom = JSON.parse(reservationObject.roomID);
+        for (let i = 0; i < timeRangeArray.length; i++) {
+            for (let m = 0; m < reservationRoom.length; m++) {
+                let roomStatus = {
+                    roomID: reservationRoom[m].roomID,
+                    Time: timeRangeArray[i],
+                    soldNum: reservationRoom[m].roomNum,
+                    availableNum: null,
+                    isAvailabe: null
+                };
+                roomStatusList.push(roomStatus);
+            }
+        }
+        await this.roomStatusRepository.updateRoomStatus(roomStatusList);
     }
 }
 exports.roomStockNum = roomStockNum;

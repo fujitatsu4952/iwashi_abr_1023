@@ -1,7 +1,13 @@
 import {
-    Scalars
+    Scalars, ReservationObject, PlanStatus
 } from '../../entity'
 import { planMastRepository, planStatusRepository} from "../../repository"
+import { getTimeRangeArray } from '../../index';
+
+interface reservationPlanItemTemp {
+    planID: Scalars['ID'];
+    planNum: number;
+}
 
 export class planStockNum {
     // ここでplanStatusRepositoryをインスタンス化
@@ -48,5 +54,26 @@ export class planStockNum {
         } else {
             return planMastStockNum
         }
+    }
+
+    public async planStockUpdate(reservationObject: ReservationObject) {
+        let planStatusList: PlanStatus[] = []
+        const timeRangeArray:Scalars['AWSDateTime'][] = getTimeRangeArray(reservationObject.checkInTime, reservationObject.checkOutTime)
+        const reservationPlan = JSON.parse(
+            reservationObject.planID
+        ) as reservationPlanItemTemp[];
+        for (let i = 0; i < timeRangeArray.length; i++) {
+            for (let m = 0; m < reservationPlan.length; m++) {
+                let planStatus: PlanStatus = {
+                    planID: reservationPlan[m].planID,
+                    Time: timeRangeArray[i],
+                    soldNum: reservationPlan[m].planNum,
+                    availableNum: null,
+                    isAvailabe: null
+                };
+                planStatusList.push(planStatus);
+            }
+        }
+        await this.planStatusRepository.updatePlanStatus(planStatusList)
     }
 }
