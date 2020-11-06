@@ -25,12 +25,19 @@ export class PlanStockNum {
             if (tempStockNum && tempStockNum.soldNum) {
                 this.stockNumList.push(tempStockNum.soldNum);
             }
+            console.log(this.stockNumList)
         }
         //もしデータ構造がまだ作られていなかったら = まだ一つも予約されていなかったら
         if (this.stockNumList.length < 1) {
+            console.log("1")
+            console.log(this.stockNumList)
+            console.log(this.planMastStockNum)
             return this.planMastStockNum;
         } else {
             const maxSoldNum = Math.max.apply(null, this.stockNumList);
+            console.log("2")
+            console.log(maxSoldNum)
+            console.log(this.planMastStockNum)
             return (this.planMastStockNum - maxSoldNum);
         }
     }
