@@ -10,8 +10,8 @@ export class PlanStockNum {
     private planStatusRepository = new planStatusRepository()
     private planInteractor = new planMastRepository();
 
-    private stockNumList: number[]=[]
-    private planMastStockNum= 0
+    public stockNumList: number[]=[]
+    public planMastStockNum= 0
     public async PlanStockNum(dateTimeRange: Scalars["AWSDate"][], planID: string): Promise<number> {
         const planMastStockNumTemp = (await this.planInteractor.fetchPlanMasts(planID))
         if(planMastStockNumTemp) {
