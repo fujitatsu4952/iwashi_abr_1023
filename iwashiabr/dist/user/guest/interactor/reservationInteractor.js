@@ -31,7 +31,8 @@ class GuestReservationInteractor {
         };
     }
     async addMast(reservationObject) {
-        await Promise.all([this.planStatusInteractor.updateStatus(reservationObject), this.roomStatusInteractor.updateStatus(reservationObject)]);
+        await this.planStatusInteractor.updateStatus(reservationObject);
+        await this.roomStatusInteractor.updateStatus(reservationObject);
         await this.reservationRepository.addReservation(reservationObject);
     }
     ;
