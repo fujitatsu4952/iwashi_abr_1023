@@ -13,10 +13,11 @@ export class PlanStockNum {
     private stockNumList: number[]=[]
     private planMastStockNum= 0
     public async PlanStockNum(dateTimeRange: Scalars["AWSDate"][], planID: string): Promise<number> {
-        let planMastStockNumTemp = (await this.planInteractor.fetchPlanMasts(planID))
+        const planMastStockNumTemp = (await this.planInteractor.fetchPlanMasts(planID))
         if(planMastStockNumTemp) {
             this.planMastStockNum = planMastStockNumTemp[0].stockNum
         } 
+        console.log(this.planMastStockNum)
 
         for (let i = 0; i < dateTimeRange.length; i++) {
             const tempStockNum  = (await this.planStatusRepository.fetchPlanStatus(dateTimeRange[i], planID));

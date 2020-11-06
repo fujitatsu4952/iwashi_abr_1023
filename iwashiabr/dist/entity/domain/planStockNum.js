@@ -11,10 +11,11 @@ class PlanStockNum {
         this.planMastStockNum = 0;
     }
     async PlanStockNum(dateTimeRange, planID) {
-        let planMastStockNumTemp = (await this.planInteractor.fetchPlanMasts(planID));
+        const planMastStockNumTemp = (await this.planInteractor.fetchPlanMasts(planID));
         if (planMastStockNumTemp) {
             this.planMastStockNum = planMastStockNumTemp[0].stockNum;
         }
+        console.log(this.planMastStockNum);
         for (let i = 0; i < dateTimeRange.length; i++) {
             const tempStockNum = (await this.planStatusRepository.fetchPlanStatus(dateTimeRange[i], planID));
             // もし該当時間に売れていた記録があればいったん保持する
