@@ -12,3 +12,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./type"), exports);
 __exportStar(require("./domain/planStockNum"), exports);
+__exportStar(require("./domain/roomStockNum"), exports);

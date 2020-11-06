@@ -2,18 +2,22 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GuestRoomStatusInteractor = void 0;
 const repository_1 = require("../../../repository");
+const index_1 = require("../../../index");
 class GuestRoomStatusInteractor {
     constructor() {
-        // ここでplanStatusRepositoryをインスタンス化
+        // ここでroomStatusRepositoryをインスタンス化
         this.roomStatusRepository = new repository_1.roomStatusRepository();
-        this.roomMastRepository = new repository_1.roomMastRepository();
+        // これはUtilをインスタンス化
+        this.roomSotckNumCalc = new index_1.roomStockNum();
     }
     async updateStatus(roomStatus) {
         await this.roomStatusRepository.updateRoomStatus(roomStatus);
     }
-    async fetchStatus(Time, roomID) {
-        const tempStockNum = await (this.roomStatusRepository.fetchRoomStatus(Time, roomID));
-        return tempStockNum || null;
+    async fetchStatus(time, roomID) {
+        return await this.roomSotckNumCalc.roomStockNumSingle(time, roomID);
+    }
+    async fetchStatusWithinRange(dateTimeRange, roomID) {
+        return await this.roomSotckNumCalc.roomStockNum(dateTimeRange, roomID);
     }
 }
 exports.GuestRoomStatusInteractor = GuestRoomStatusInteractor;

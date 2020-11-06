@@ -1,6 +1,7 @@
 import { Scalars } from '../../entity';
-export declare class PlanStockNum {
+export declare class planStockNum {
     private planStatusRepository;
     private planInteractor;
-    PlanStockNum(dateTimeRange: Scalars["AWSDate"][], planID: string): Promise<number>;
+    planStockNum(dateTimeRange: Scalars["AWSDate"][], planID: string): Promise<number>;
+    planStockNumSingle(time: Scalars["AWSDate"], planID: string): Promise<number>;
 }

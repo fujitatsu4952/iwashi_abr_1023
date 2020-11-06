@@ -1,21 +1,22 @@
 import {IGuestRoomStatusUsecase} from "../usecase/roomStatusUsecase";
-import {
-    PlanMast, RoomStatus
-} from '../../../entity/type'
+import { RoomStatus, RoomMast } from '../../../entity/type'
 import {roomStatusRepository, roomMastRepository} from "../../../repository"
-import { getUniqueID } from "../../../util/generateUuid";
+import { roomStockNum } from "../../../index";
 
 
 export class GuestRoomStatusInteractor implements IGuestRoomStatusUsecase {
-    // ここでplanStatusRepositoryをインスタンス化
+    // ここでroomStatusRepositoryをインスタンス化
     private roomStatusRepository = new roomStatusRepository()
-    private roomMastRepository = new roomMastRepository()
-    
-    public async updateStatus(roomStatus: RoomStatus[]): Promise<void> {
+    // これはUtilをインスタンス化
+    private roomSotckNumCalc = new roomStockNum();
+        public async updateStatus(roomStatus: RoomStatus[]): Promise<void> {
         await this.roomStatusRepository.updateRoomStatus(roomStatus);
     }
-    public async fetchStatus(Time: string, roomID: string): Promise<RoomStatus | null> {
-        const tempStockNum = await (this.roomStatusRepository.fetchRoomStatus(Time, roomID));
-        return tempStockNum || null;
+    public async fetchStatus(time: string, roomID: string): Promise<number> {
+        return await this.roomSotckNumCalc.roomStockNumSingle(time, roomID)
+    }
+
+    public async fetchStatusWithinRange(dateTimeRange: string[], roomID: string): Promise<number> {
+        return await this.roomSotckNumCalc.roomStockNum(dateTimeRange, roomID)
     }
 }
