@@ -79,6 +79,7 @@ export class roomStockNum {
                 roomStatusList.push(roomStatus);
             }
         }
+        console.log(roomStatusList)
         await this.roomStatusRepository.updateRoomStatus(roomStatusList)
     }
 }
