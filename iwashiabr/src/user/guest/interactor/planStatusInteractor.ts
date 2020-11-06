@@ -19,6 +19,6 @@ export class GuestPlanStatusInteractor implements IGuestPlanStatusUsecase {
         return await this.planStatusRepository.fetchPlanStatus(Time, planID);
     }
     public async fetchStatusWithinRange(dateTimeRange: string[], planID: string): Promise<number> {
-        return this.planSotckNumCalc.PlanStockNum(dateTimeRange, planID)
+        return await this.planSotckNumCalc.PlanStockNum(dateTimeRange, planID)
     }
 }

@@ -16,7 +16,7 @@ class GuestPlanStatusInteractor {
         return await this.planStatusRepository.fetchPlanStatus(Time, planID);
     }
     async fetchStatusWithinRange(dateTimeRange, planID) {
-        return this.planSotckNumCalc.PlanStockNum(dateTimeRange, planID);
+        return await this.planSotckNumCalc.PlanStockNum(dateTimeRange, planID);
     }
 }
 exports.GuestPlanStatusInteractor = GuestPlanStatusInteractor;
