@@ -32,6 +32,7 @@ export class GuestReservationInteractor implements IGuestReservationUsecase {
         };
     }
     public async addMast(reservationObject: ReservationObject): Promise<void> {
+        
         await Promise.all([this.planStatusInteractor.updateStatus(reservationObject), this.roomStatusInteractor.updateStatus(reservationObject)]);
         await this.reservationRepository.addReservation(reservationObject);
     };
