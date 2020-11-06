@@ -17,6 +17,7 @@ class PlanStockNum {
         }
         for (let i = 0; i < dateTimeRange.length; i++) {
             const tempStockNum = (await this.planStatusRepository.fetchPlanStatus(dateTimeRange[i], planID));
+            console.log(planID, tempStockNum);
             // もし該当時間に売れていた記録があればいったん保持する
             if (tempStockNum && tempStockNum.soldNum) {
                 this.stockNumList.push(tempStockNum.soldNum);
