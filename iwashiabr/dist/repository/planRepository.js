@@ -15,7 +15,12 @@ class planMastRepository {
     // 他の処理も追加可能
     async fetchPlanMasts(planID) {
         const res = await sdk.fetchPlanMasts({ planID });
-        return res;
+        if (res && res.data) {
+            return res.data.fetchPlanMasts;
+        }
+        else {
+            return null;
+        }
     }
 }
 exports.planMastRepository = planMastRepository;

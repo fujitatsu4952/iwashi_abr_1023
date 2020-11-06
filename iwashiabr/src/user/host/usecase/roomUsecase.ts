@@ -8,5 +8,5 @@ export interface IHostRoomUsecase {
     // 作ったものを更新
     updateMast(roomMast: RoomMast | null): Promise<any>;
     // これまでのプラン一覧を取得
-    fetchRoomMasts(roomID: Scalars['ID'] | undefined | null): Promise<any | undefined>;
+    fetchRoomMasts(roomID: Scalars['ID'] | undefined | null): Promise<RoomMast[] | null>;
 }

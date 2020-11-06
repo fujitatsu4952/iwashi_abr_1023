@@ -15,8 +15,12 @@ export class reservationRepository {
   }
 
   // 他の処理も追加可能
-  async fetchReservationObjects(reservationID: string | null | undefined) {
-    const res = await sdk.fetchReservationObjects({ reservationID });
-    return res;
+  async fetchReservationObjects(reservationID: string | null | undefined): Promise<ReservationObject | null> {
+    const res = (await sdk.fetchReservationObjects({ reservationID })).data;
+    if(res && res.fetchReservationObjects) {
+      return res.fetchReservationObjects[0]
+    } else {
+      return null
+    }
   }
 };

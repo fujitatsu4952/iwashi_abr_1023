@@ -8,5 +8,5 @@ export declare class GuestReservationInteractor implements IGuestReservationUsec
     getBlanc(): Promise<ReservationObject>;
     addMast(reservationObject: ReservationObject | null): Promise<any>;
     updateMast(reservationObject: ReservationObject | null): Promise<any>;
-    fetchReservationObjects(reservationID: string | undefined | null): Promise<any>;
+    fetchReservationObjects(reservationID: string | undefined | null): Promise<ReservationObject | null>;
 }

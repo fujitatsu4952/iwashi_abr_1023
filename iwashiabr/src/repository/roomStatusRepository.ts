@@ -14,10 +14,10 @@ export class roomStatusRepository {
     await sdk.addRoomStatus({ roomStatus });
   }
 
-  async fetchRoomStatus(Time: string, roomID: string) {
+  async fetchRoomStatus(Time: string, roomID: string): Promise<RoomStatus | null> {
     const res = (await sdk.fetchRoomStatus({ Time, roomID })).data
     if(res && res.fetchRoomStatus) {
-      return res.fetchRoomStatus
+      return res.fetchRoomStatus[0]
     } else {
       return null
     }

@@ -15,8 +15,12 @@ export class roomMastRepository {
   }
 
   // 他の処理も追加可能
-  async fetchRoomMasts(roomID: string | null | undefined) {
+  async fetchRoomMasts(roomID: string | undefined): Promise<RoomMast[] | null> {
     const res = await sdk.fetchRoomMasts({ roomID });
-    return res;
+    if(res && res.data) {
+      return res.data.fetchRoomMasts
+    } else {
+      return null;
+    }
   }
 };

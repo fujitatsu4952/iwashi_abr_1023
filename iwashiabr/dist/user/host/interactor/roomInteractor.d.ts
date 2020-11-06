@@ -5,5 +5,5 @@ export declare class HostRoomInteractor implements IHostRoomUsecase {
     getBlancMast(): Promise<RoomMast>;
     addMast(roomMast: RoomMast | null): Promise<any>;
     updateMast(roomMast: RoomMast | null): Promise<any>;
-    fetchRoomMasts(roomID: string | undefined | null): Promise<any>;
+    fetchRoomMasts(roomID: string | undefined): Promise<RoomMast[] | null>;
 }

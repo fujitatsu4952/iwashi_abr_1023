@@ -28,7 +28,7 @@ export class GuestPlanInteractor implements IGuestPlanUsecase {
     updateMast(planMast: PlanMast | null): Promise<any> {
         throw new Error('Method not implemented.');
     }
-    public async fetchPlanMasts(planID: string | undefined): Promise<any> {
+    public async fetchPlanMasts(planID: string | undefined): Promise<PlanMast[] | null> {
         return await this.planMastRepository.fetchPlanMasts(planID)
     }
 }

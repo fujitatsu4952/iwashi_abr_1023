@@ -3,5 +3,5 @@ export interface IGuestPlanUsecase {
     getBlancMast(): Promise<PlanMast>;
     addMast(planMast: PlanMast | null): Promise<any>;
     updateMast(planMast: PlanMast | null): Promise<any>;
-    fetchPlanMasts(planID: Scalars['ID'] | undefined): Promise<any | undefined>;
+    fetchPlanMasts(planID: Scalars['ID'] | undefined): Promise<PlanMast[] | null>;
 }

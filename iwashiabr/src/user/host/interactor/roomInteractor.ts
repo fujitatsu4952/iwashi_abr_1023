@@ -30,7 +30,7 @@ export class HostRoomInteractor implements IHostRoomUsecase {
     public async updateMast(roomMast: RoomMast | null): Promise<any> {
         throw await this.roomMastRepository.updateRoom(roomMast);
     }
-    public async fetchRoomMasts(roomID: string | undefined | null): Promise<any> {
+    public async fetchRoomMasts(roomID: string | undefined): Promise<RoomMast[] | null> {
         return (await this.roomMastRepository.fetchRoomMasts(roomID))
     }   
 }

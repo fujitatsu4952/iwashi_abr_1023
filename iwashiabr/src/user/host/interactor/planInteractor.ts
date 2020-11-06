@@ -28,7 +28,7 @@ export class HostPlanInteractor implements IHostPlanUsecase {
     public async updateMast(planMast: PlanMast | null): Promise<any> {
         return await this.planMastRepository.updatePlan(planMast)
     }
-    public async fetchPlanMasts(planID: string | undefined | null): Promise<any> {
+    public async fetchPlanMasts(planID: string | undefined): Promise<PlanMast[] | null> {
         return await this.planMastRepository.fetchPlanMasts(planID)
     }
 }

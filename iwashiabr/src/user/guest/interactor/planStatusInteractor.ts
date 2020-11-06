@@ -13,7 +13,7 @@ export class GuestPlanStatusInteractor implements IGuestPlanStatusUsecase {
     public async updateStatus(planStatus: PlanStatus[]): Promise<void> {
         await this.planStatusRepository.updatePlanStatus(planStatus);
     }
-    public async fetchStatus(Time: string, planID: string): Promise<any | null | undefined> {
+    public async fetchStatus(Time: string, planID: string): Promise< PlanStatus | null> {
         return await this.planStatusRepository.fetchPlanStatus(Time, planID);
     }
 }

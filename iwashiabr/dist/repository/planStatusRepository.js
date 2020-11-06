@@ -13,8 +13,13 @@ class planStatusRepository {
         await sdk.addPlanStatus({ planStatus });
     }
     async fetchPlanStatus(Time, planID) {
-        const res = await sdk.fetchPlanStatus({ Time, planID });
-        return res;
+        const res = (await sdk.fetchPlanStatus({ Time, planID })).data;
+        if (res && res.fetchPlanStatus) {
+            return res.fetchPlanStatus[0];
+        }
+        else {
+            return null;
+        }
     }
 }
 exports.planStatusRepository = planStatusRepository;

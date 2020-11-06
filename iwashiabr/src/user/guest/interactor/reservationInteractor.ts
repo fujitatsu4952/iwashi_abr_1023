@@ -42,7 +42,7 @@ export class GuestReservationInteractor implements IGuestReservationUsecase {
     public async updateMast(reservationObject: ReservationObject | null): Promise<any> {
         return await this.reservationRepository.updateReservation(reservationObject)
     };
-    public async fetchReservationObjects(reservationID: string | undefined | null): Promise<any> {
+    public async fetchReservationObjects(reservationID: string | undefined | null): Promise<ReservationObject | null> {
         return await this.reservationRepository.fetchReservationObjects(reservationID)
     }
 }

@@ -5,5 +5,5 @@ export declare class GuestRoomInteractor implements IGuestRoomUsecase {
     getBlancMast(): Promise<RoomMast>;
     addMast(roomMast: RoomMast | null): Promise<any>;
     updateMast(roomMast: RoomMast | null): Promise<any>;
-    fetchRoomMasts(roomID: string | undefined): Promise<any>;
+    fetchRoomMasts(roomID: string | undefined): Promise<RoomMast[] | null>;
 }

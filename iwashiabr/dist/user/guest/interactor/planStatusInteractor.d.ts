@@ -3,5 +3,5 @@ import { PlanStatus } from '../../../entity/type';
 export declare class GuestPlanStatusInteractor implements IGuestPlanStatusUsecase {
     private planStatusRepository;
     updateStatus(planStatus: PlanStatus[]): Promise<void>;
-    fetchStatus(Time: string, planID: string): Promise<any | null | undefined>;
+    fetchStatus(Time: string, planID: string): Promise<PlanStatus | null>;
 }
