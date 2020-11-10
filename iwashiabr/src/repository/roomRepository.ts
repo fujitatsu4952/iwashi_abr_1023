@@ -2,7 +2,7 @@ import { RoomMast } from "../index";
 import { GraphQLClient } from "graphql-request";
 import { getSdk } from "./mutations";
 
-const graphqlClient = new GraphQLClient(`http://18.180.113.27:8080`);
+const graphqlClient = new GraphQLClient(`https://tomodachi.fujii-tatsuya-199807.com`);
 const sdk = getSdk(graphqlClient);
 
 export class roomMastRepository {
