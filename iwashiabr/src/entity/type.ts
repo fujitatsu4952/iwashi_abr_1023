@@ -20,6 +20,94 @@ export type Scalars = {
   AWSIPAddress: string;
 };
 
+export type ReservationObject = {
+  GuestTell?: Maybe<Scalars['String']>;
+  canceledAt?: Maybe<Scalars['String']>;
+  checkInTime: Scalars['String'];
+  checkOutTime: Scalars['String'];
+  guestEmail?: Maybe<Scalars['String']>;
+  guestName?: Maybe<Scalars['String']>;
+  guestTell?: Maybe<Scalars['String']>;
+  peopleNum: Scalars['Int'];
+  planID: Scalars['ID'];
+  planNum?: Maybe<Scalars['Int']>;
+  policyID: Scalars['ID'];
+  reservationID: Scalars['ID'];
+  roomID: Scalars['ID'];
+  roomNum?: Maybe<Scalars['Int']>;
+  totalPrice?: Maybe<Scalars['Int']>;
+};
+
+export type ReservationObjectInput = {
+  GuestTell?: Maybe<Scalars['String']>;
+  canceledAt?: Maybe<Scalars['String']>;
+  checkInTime: Scalars['String'];
+  checkOutTime: Scalars['String'];
+  guestEmail?: Maybe<Scalars['String']>;
+  guestName?: Maybe<Scalars['String']>;
+  guestTell?: Maybe<Scalars['String']>;
+  peopleNum: Scalars['Int'];
+  planID: Scalars['ID'];
+  planNum?: Maybe<Scalars['Int']>;
+  policyID: Scalars['ID'];
+  reservationID: Scalars['ID'];
+  roomID: Scalars['ID'];
+  roomNum?: Maybe<Scalars['Int']>;
+  totalPrice?: Maybe<Scalars['Int']>;
+};
+
+export type RoomChargeMast = {
+  roomChargeID: Scalars['ID'];
+  roomChargePrice?: Maybe<Scalars['Int']>;
+};
+
+export type RoomChargeMastInput = {
+  roomChargeID: Scalars['ID'];
+  roomChargePrice?: Maybe<Scalars['Int']>;
+};
+
+export type RoomMast = {
+  deletedAt?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
+  inSale?: Maybe<Scalars['Boolean']>;
+  maxPeopleNum: Scalars['Int'];
+  minOrderNum: Scalars['Int'];
+  name: Scalars['String'];
+  roomID: Scalars['ID'];
+  stockNum: Scalars['Int'];
+  subDescription: Scalars['String'];
+};
+
+export type RoomMastInput = {
+  deletedAt?: Maybe<Scalars['String']>;
+  description: Scalars['String'];
+  inSale?: Maybe<Scalars['Boolean']>;
+  maxPeopleNum: Scalars['Int'];
+  minOrderNum: Scalars['Int'];
+  name: Scalars['String'];
+  roomID: Scalars['ID'];
+  stockNum: Scalars['Int'];
+  subDescription: Scalars['String'];
+};
+
+export type RoomStatus = {
+  Time: Scalars['String'];
+  availableNum?: Maybe<Scalars['Int']>;
+  dateTime: Scalars['String'];
+  isAvailabe?: Maybe<Scalars['Boolean']>;
+  roomID: Scalars['ID'];
+  soldNum?: Maybe<Scalars['Int']>;
+};
+
+export type RoomStatusInput = {
+  Time: Scalars['String'];
+  availableNum?: Maybe<Scalars['Int']>;
+  dateTime: Scalars['String'];
+  isAvailabe?: Maybe<Scalars['Boolean']>;
+  roomID: Scalars['ID'];
+  soldNum?: Maybe<Scalars['Int']>;
+};
+
 export type DateStatusObject = {
   date: Scalars['AWSDate'];
   isStayable: Scalars['Boolean'];
@@ -289,40 +377,6 @@ export type PolicyMastInput = {
   roomChargePrice?: Maybe<Scalars['Int']>;
 };
 
-export type ReservationObject = {
-  reservationID: Scalars['ID'];
-  checkInTime: Scalars['String'];
-  checkOutTime: Scalars['String'];
-  planID: Scalars['ID'];
-  roomID: Scalars['ID'];
-  roomNum?: Maybe<Scalars['Int']>;
-  planNum?: Maybe<Scalars['Int']>;
-  peopleNum: Scalars['Int'];
-  policyID: Scalars['ID'];
-  totalPrice?: Maybe<Scalars['Int']>;
-  guestName?: Maybe<Scalars['String']>;
-  guestEmail?: Maybe<Scalars['String']>;
-  GuestTell?: Maybe<Scalars['String']>;
-  canceledAt?: Maybe<Scalars['String']>;
-};
-
-export type ReservationObjectInput = {
-  reservationID: Scalars['ID'];
-  checkInTime: Scalars['String'];
-  checkOutTime: Scalars['String'];
-  planID: Scalars['ID'];
-  roomID: Scalars['ID'];
-  roomNum?: Maybe<Scalars['Int']>;
-  planNum?: Maybe<Scalars['Int']>;
-  peopleNum: Scalars['Int'];
-  policyID: Scalars['ID'];
-  totalPrice?: Maybe<Scalars['Int']>;
-  guestName?: Maybe<Scalars['String']>;
-  guestEmail?: Maybe<Scalars['String']>;
-  GuestTell?: Maybe<Scalars['String']>;
-  canceledAt?: Maybe<Scalars['String']>;
-};
-
 export type ReservationPlanInfo = {
   reservationID: Scalars['String'];
   planID: Scalars['String'];
@@ -363,46 +417,6 @@ export type RoomImageMappingTemplate = {
 export type RoomImageMappingTemplateInput = {
   roomID: Scalars['String'];
   imageID?: Maybe<Scalars['String']>;
-};
-
-export type RoomMast = {
-  roomID: Scalars['ID'];
-  name: Scalars['String'];
-  description: Scalars['String'];
-  subDescription: Scalars['String'];
-  maxPeopleNum: Scalars['Int'];
-  stockNum: Scalars['Int'];
-  minOrderNum: Scalars['Int'];
-  deletedAt?: Maybe<Scalars['String']>;
-  inSale?: Maybe<Scalars['Boolean']>;
-};
-
-export type RoomMastInput = {
-  roomID: Scalars['ID'];
-  name: Scalars['String'];
-  description: Scalars['String'];
-  subDescription: Scalars['String'];
-  maxPeopleNum: Scalars['Int'];
-  stockNum: Scalars['Int'];
-  minOrderNum: Scalars['Int'];
-  deletedAt?: Maybe<Scalars['String']>;
-  inSale?: Maybe<Scalars['Boolean']>;
-};
-
-export type RoomStatus = {
-  roomID: Scalars['ID'];
-  Time: Scalars['String'];
-  soldNum?: Maybe<Scalars['Int']>;
-  availableNum?: Maybe<Scalars['Int']>;
-  isAvailabe?: Maybe<Scalars['Boolean']>;
-};
-
-export type RoomStatusInput = {
-  roomID: Scalars['ID'];
-  Time: Scalars['String'];
-  soldNum?: Maybe<Scalars['Int']>;
-  availableNum?: Maybe<Scalars['Int']>;
-  isAvailabe?: Maybe<Scalars['Boolean']>;
 };
 
 export type S3Object = {
@@ -508,19 +522,27 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
-  DateStatusObject: ResolverTypeWrapper<DateStatusObject>;
+  ReservationObject: ResolverTypeWrapper<ReservationObject>;
+  String: ResolverTypeWrapper<Scalars['String']>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
+  ID: ResolverTypeWrapper<Scalars['ID']>;
+  ReservationObjectInput: ReservationObjectInput;
+  RoomChargeMast: ResolverTypeWrapper<RoomChargeMast>;
+  RoomChargeMastInput: RoomChargeMastInput;
+  RoomMast: ResolverTypeWrapper<RoomMast>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  RoomMastInput: RoomMastInput;
+  RoomStatus: ResolverTypeWrapper<RoomStatus>;
+  RoomStatusInput: RoomStatusInput;
+  DateStatusObject: ResolverTypeWrapper<DateStatusObject>;
   DateStatusObjectInput: DateStatusObjectInput;
   KeyValueObject: ResolverTypeWrapper<KeyValueObject>;
-  String: ResolverTypeWrapper<Scalars['String']>;
   PriceObject: ResolverTypeWrapper<PriceObject>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
   PriceObjectInput: PriceObjectInput;
   CurrencyType: CurrencyType;
   DayOfTheWeek: DayOfTheWeek;
   TimeZone: TimeZone;
   Query: ResolverTypeWrapper<{}>;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
   Mutation: ResolverTypeWrapper<{}>;
   CancelPolicyMast: ResolverTypeWrapper<CancelPolicyMast>;
   CancelPolicyMastInput: CancelPolicyMastInput;
@@ -534,18 +556,12 @@ export type ResolversTypes = {
   PlanStatusInput: PlanStatusInput;
   PolicyMast: ResolverTypeWrapper<PolicyMast>;
   PolicyMastInput: PolicyMastInput;
-  ReservationObject: ResolverTypeWrapper<ReservationObject>;
-  ReservationObjectInput: ReservationObjectInput;
   ReservationPlanInfo: ResolverTypeWrapper<ReservationPlanInfo>;
   ReservationPlanInfoInput: ReservationPlanInfoInput;
   ReservationRoomInfo: ResolverTypeWrapper<ReservationRoomInfo>;
   ReservationRoomInfoInput: ReservationRoomInfoInput;
   RoomImageMappingTemplate: ResolverTypeWrapper<RoomImageMappingTemplate>;
   RoomImageMappingTemplateInput: RoomImageMappingTemplateInput;
-  RoomMast: ResolverTypeWrapper<RoomMast>;
-  RoomMastInput: RoomMastInput;
-  RoomStatus: ResolverTypeWrapper<RoomStatus>;
-  RoomStatusInput: RoomStatusInput;
   S3Object: ResolverTypeWrapper<S3Object>;
   S3ObjectInput: S3ObjectInput;
   AWSDate: ResolverTypeWrapper<Scalars['AWSDate']>;
@@ -561,16 +577,24 @@ export type ResolversTypes = {
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
-  DateStatusObject: DateStatusObject;
+  ReservationObject: ReservationObject;
+  String: Scalars['String'];
+  Int: Scalars['Int'];
+  ID: Scalars['ID'];
+  ReservationObjectInput: ReservationObjectInput;
+  RoomChargeMast: RoomChargeMast;
+  RoomChargeMastInput: RoomChargeMastInput;
+  RoomMast: RoomMast;
   Boolean: Scalars['Boolean'];
+  RoomMastInput: RoomMastInput;
+  RoomStatus: RoomStatus;
+  RoomStatusInput: RoomStatusInput;
+  DateStatusObject: DateStatusObject;
   DateStatusObjectInput: DateStatusObjectInput;
   KeyValueObject: KeyValueObject;
-  String: Scalars['String'];
   PriceObject: PriceObject;
-  Int: Scalars['Int'];
   PriceObjectInput: PriceObjectInput;
   Query: {};
-  ID: Scalars['ID'];
   Mutation: {};
   CancelPolicyMast: CancelPolicyMast;
   CancelPolicyMastInput: CancelPolicyMastInput;
@@ -584,18 +608,12 @@ export type ResolversParentTypes = {
   PlanStatusInput: PlanStatusInput;
   PolicyMast: PolicyMast;
   PolicyMastInput: PolicyMastInput;
-  ReservationObject: ReservationObject;
-  ReservationObjectInput: ReservationObjectInput;
   ReservationPlanInfo: ReservationPlanInfo;
   ReservationPlanInfoInput: ReservationPlanInfoInput;
   ReservationRoomInfo: ReservationRoomInfo;
   ReservationRoomInfoInput: ReservationRoomInfoInput;
   RoomImageMappingTemplate: RoomImageMappingTemplate;
   RoomImageMappingTemplateInput: RoomImageMappingTemplateInput;
-  RoomMast: RoomMast;
-  RoomMastInput: RoomMastInput;
-  RoomStatus: RoomStatus;
-  RoomStatusInput: RoomStatusInput;
   S3Object: S3Object;
   S3ObjectInput: S3ObjectInput;
   AWSDate: Scalars['AWSDate'];
@@ -607,6 +625,54 @@ export type ResolversParentTypes = {
   AWSURL: Scalars['AWSURL'];
   AWSPhone: Scalars['AWSPhone'];
   AWSIPAddress: Scalars['AWSIPAddress'];
+};
+
+export type ReservationObjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['ReservationObject'] = ResolversParentTypes['ReservationObject']> = {
+  GuestTell?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  canceledAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  checkInTime?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  checkOutTime?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  guestEmail?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  guestName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  guestTell?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  peopleNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  planID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  planNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  policyID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  reservationID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  roomID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  roomNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  totalPrice?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomChargeMastResolvers<ContextType = any, ParentType extends ResolversParentTypes['RoomChargeMast'] = ResolversParentTypes['RoomChargeMast']> = {
+  roomChargeID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  roomChargePrice?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomMastResolvers<ContextType = any, ParentType extends ResolversParentTypes['RoomMast'] = ResolversParentTypes['RoomMast']> = {
+  deletedAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  inSale?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  maxPeopleNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  minOrderNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  roomID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  stockNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  subDescription?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomStatusResolvers<ContextType = any, ParentType extends ResolversParentTypes['RoomStatus'] = ResolversParentTypes['RoomStatus']> = {
+  Time?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  availableNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  dateTime?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  isAvailabe?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  roomID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  soldNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type DateStatusObjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['DateStatusObject'] = ResolversParentTypes['DateStatusObject']> = {
@@ -705,24 +771,6 @@ export type PolicyMastResolvers<ContextType = any, ParentType extends ResolversP
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type ReservationObjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['ReservationObject'] = ResolversParentTypes['ReservationObject']> = {
-  reservationID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  checkInTime?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  checkOutTime?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  planID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  roomID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  roomNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  planNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  peopleNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  policyID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  totalPrice?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  guestName?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  guestEmail?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  GuestTell?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  canceledAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
 export type ReservationPlanInfoResolvers<ContextType = any, ParentType extends ResolversParentTypes['ReservationPlanInfo'] = ResolversParentTypes['ReservationPlanInfo']> = {
   reservationID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   planID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -744,28 +792,6 @@ export type ReservationRoomInfoResolvers<ContextType = any, ParentType extends R
 export type RoomImageMappingTemplateResolvers<ContextType = any, ParentType extends ResolversParentTypes['RoomImageMappingTemplate'] = ResolversParentTypes['RoomImageMappingTemplate']> = {
   roomID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   imageID?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type RoomMastResolvers<ContextType = any, ParentType extends ResolversParentTypes['RoomMast'] = ResolversParentTypes['RoomMast']> = {
-  roomID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  description?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  subDescription?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  maxPeopleNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  stockNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  minOrderNum?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  deletedAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  inSale?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type RoomStatusResolvers<ContextType = any, ParentType extends ResolversParentTypes['RoomStatus'] = ResolversParentTypes['RoomStatus']> = {
-  roomID?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  Time?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  soldNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  availableNum?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  isAvailabe?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -815,6 +841,10 @@ export interface AwsipAddressScalarConfig extends GraphQLScalarTypeConfig<Resolv
 }
 
 export type Resolvers<ContextType = any> = {
+  ReservationObject?: ReservationObjectResolvers<ContextType>;
+  RoomChargeMast?: RoomChargeMastResolvers<ContextType>;
+  RoomMast?: RoomMastResolvers<ContextType>;
+  RoomStatus?: RoomStatusResolvers<ContextType>;
   DateStatusObject?: DateStatusObjectResolvers<ContextType>;
   KeyValueObject?: KeyValueObjectResolvers<ContextType>;
   PriceObject?: PriceObjectResolvers<ContextType>;
@@ -826,12 +856,9 @@ export type Resolvers<ContextType = any> = {
   PlanMast?: PlanMastResolvers<ContextType>;
   PlanStatus?: PlanStatusResolvers<ContextType>;
   PolicyMast?: PolicyMastResolvers<ContextType>;
-  ReservationObject?: ReservationObjectResolvers<ContextType>;
   ReservationPlanInfo?: ReservationPlanInfoResolvers<ContextType>;
   ReservationRoomInfo?: ReservationRoomInfoResolvers<ContextType>;
   RoomImageMappingTemplate?: RoomImageMappingTemplateResolvers<ContextType>;
-  RoomMast?: RoomMastResolvers<ContextType>;
-  RoomStatus?: RoomStatusResolvers<ContextType>;
   S3Object?: S3ObjectResolvers<ContextType>;
   AWSDate?: GraphQLScalarType;
   AWSDateTime?: GraphQLScalarType;

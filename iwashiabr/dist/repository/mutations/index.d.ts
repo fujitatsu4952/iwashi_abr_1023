@@ -24,6 +24,90 @@ export declare type Scalars = {
     AWSPhone: any;
     AWSIPAddress: any;
 };
+export declare type ReservationObject = {
+    __typename?: 'ReservationObject';
+    GuestTell?: Maybe<Scalars['String']>;
+    canceledAt?: Maybe<Scalars['String']>;
+    checkInTime: Scalars['String'];
+    checkOutTime: Scalars['String'];
+    guestEmail?: Maybe<Scalars['String']>;
+    guestName?: Maybe<Scalars['String']>;
+    guestTell?: Maybe<Scalars['String']>;
+    peopleNum: Scalars['Int'];
+    planID: Scalars['ID'];
+    planNum?: Maybe<Scalars['Int']>;
+    policyID: Scalars['ID'];
+    reservationID: Scalars['ID'];
+    roomID: Scalars['ID'];
+    roomNum?: Maybe<Scalars['Int']>;
+    totalPrice?: Maybe<Scalars['Int']>;
+};
+export declare type ReservationObjectInput = {
+    GuestTell?: Maybe<Scalars['String']>;
+    canceledAt?: Maybe<Scalars['String']>;
+    checkInTime: Scalars['String'];
+    checkOutTime: Scalars['String'];
+    guestEmail?: Maybe<Scalars['String']>;
+    guestName?: Maybe<Scalars['String']>;
+    guestTell?: Maybe<Scalars['String']>;
+    peopleNum: Scalars['Int'];
+    planID: Scalars['ID'];
+    planNum?: Maybe<Scalars['Int']>;
+    policyID: Scalars['ID'];
+    reservationID: Scalars['ID'];
+    roomID: Scalars['ID'];
+    roomNum?: Maybe<Scalars['Int']>;
+    totalPrice?: Maybe<Scalars['Int']>;
+};
+export declare type RoomChargeMast = {
+    __typename?: 'RoomChargeMast';
+    roomChargeID: Scalars['ID'];
+    roomChargePrice?: Maybe<Scalars['Int']>;
+};
+export declare type RoomChargeMastInput = {
+    roomChargeID: Scalars['ID'];
+    roomChargePrice?: Maybe<Scalars['Int']>;
+};
+export declare type RoomMast = {
+    __typename?: 'RoomMast';
+    deletedAt?: Maybe<Scalars['String']>;
+    description: Scalars['String'];
+    inSale?: Maybe<Scalars['Boolean']>;
+    maxPeopleNum: Scalars['Int'];
+    minOrderNum: Scalars['Int'];
+    name: Scalars['String'];
+    roomID: Scalars['ID'];
+    stockNum: Scalars['Int'];
+    subDescription: Scalars['String'];
+};
+export declare type RoomMastInput = {
+    deletedAt?: Maybe<Scalars['String']>;
+    description: Scalars['String'];
+    inSale?: Maybe<Scalars['Boolean']>;
+    maxPeopleNum: Scalars['Int'];
+    minOrderNum: Scalars['Int'];
+    name: Scalars['String'];
+    roomID: Scalars['ID'];
+    stockNum: Scalars['Int'];
+    subDescription: Scalars['String'];
+};
+export declare type RoomStatus = {
+    __typename?: 'RoomStatus';
+    Time: Scalars['String'];
+    availableNum?: Maybe<Scalars['Int']>;
+    dateTime: Scalars['String'];
+    isAvailabe?: Maybe<Scalars['Boolean']>;
+    roomID: Scalars['ID'];
+    soldNum?: Maybe<Scalars['Int']>;
+};
+export declare type RoomStatusInput = {
+    Time: Scalars['String'];
+    availableNum?: Maybe<Scalars['Int']>;
+    dateTime: Scalars['String'];
+    isAvailabe?: Maybe<Scalars['Boolean']>;
+    roomID: Scalars['ID'];
+    soldNum?: Maybe<Scalars['Int']>;
+};
 export declare type DateStatusObject = {
     __typename?: 'DateStatusObject';
     date: Scalars['AWSDate'];
@@ -240,39 +324,6 @@ export declare type PolicyMastInput = {
     policyID: Scalars['ID'];
     roomChargePrice?: Maybe<Scalars['Int']>;
 };
-export declare type ReservationObject = {
-    __typename?: 'ReservationObject';
-    reservationID: Scalars['ID'];
-    checkInTime: Scalars['String'];
-    checkOutTime: Scalars['String'];
-    planID: Scalars['ID'];
-    roomID: Scalars['ID'];
-    roomNum?: Maybe<Scalars['Int']>;
-    planNum?: Maybe<Scalars['Int']>;
-    peopleNum: Scalars['Int'];
-    policyID: Scalars['ID'];
-    totalPrice?: Maybe<Scalars['Int']>;
-    guestName?: Maybe<Scalars['String']>;
-    guestEmail?: Maybe<Scalars['String']>;
-    GuestTell?: Maybe<Scalars['String']>;
-    canceledAt?: Maybe<Scalars['String']>;
-};
-export declare type ReservationObjectInput = {
-    reservationID: Scalars['ID'];
-    checkInTime: Scalars['String'];
-    checkOutTime: Scalars['String'];
-    planID: Scalars['ID'];
-    roomID: Scalars['ID'];
-    roomNum?: Maybe<Scalars['Int']>;
-    planNum?: Maybe<Scalars['Int']>;
-    peopleNum: Scalars['Int'];
-    policyID: Scalars['ID'];
-    totalPrice?: Maybe<Scalars['Int']>;
-    guestName?: Maybe<Scalars['String']>;
-    guestEmail?: Maybe<Scalars['String']>;
-    GuestTell?: Maybe<Scalars['String']>;
-    canceledAt?: Maybe<Scalars['String']>;
-};
 export declare type ReservationPlanInfo = {
     __typename?: 'ReservationPlanInfo';
     reservationID: Scalars['String'];
@@ -311,44 +362,6 @@ export declare type RoomImageMappingTemplate = {
 export declare type RoomImageMappingTemplateInput = {
     roomID: Scalars['String'];
     imageID?: Maybe<Scalars['String']>;
-};
-export declare type RoomMast = {
-    __typename?: 'RoomMast';
-    roomID: Scalars['ID'];
-    name: Scalars['String'];
-    description: Scalars['String'];
-    subDescription: Scalars['String'];
-    maxPeopleNum: Scalars['Int'];
-    stockNum: Scalars['Int'];
-    minOrderNum: Scalars['Int'];
-    deletedAt?: Maybe<Scalars['String']>;
-    inSale?: Maybe<Scalars['Boolean']>;
-};
-export declare type RoomMastInput = {
-    roomID: Scalars['ID'];
-    name: Scalars['String'];
-    description: Scalars['String'];
-    subDescription: Scalars['String'];
-    maxPeopleNum: Scalars['Int'];
-    stockNum: Scalars['Int'];
-    minOrderNum: Scalars['Int'];
-    deletedAt?: Maybe<Scalars['String']>;
-    inSale?: Maybe<Scalars['Boolean']>;
-};
-export declare type RoomStatus = {
-    __typename?: 'RoomStatus';
-    roomID: Scalars['ID'];
-    Time: Scalars['String'];
-    soldNum?: Maybe<Scalars['Int']>;
-    availableNum?: Maybe<Scalars['Int']>;
-    isAvailabe?: Maybe<Scalars['Boolean']>;
-};
-export declare type RoomStatusInput = {
-    roomID: Scalars['ID'];
-    Time: Scalars['String'];
-    soldNum?: Maybe<Scalars['Int']>;
-    availableNum?: Maybe<Scalars['Int']>;
-    isAvailabe?: Maybe<Scalars['Boolean']>;
 };
 export declare type S3Object = {
     __typename?: 'S3Object';

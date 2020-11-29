@@ -1,3 +1,91 @@
+type ReservationObject {
+  GuestTell: String
+  canceledAt: String
+  checkInTime: String!
+  checkOutTime: String!
+  guestEmail: String
+  guestName: String
+  guestTell: String
+  peopleNum: Int!
+  planID: ID!
+  planNum: Int
+  policyID: ID!
+  reservationID: ID!
+  roomID: ID!
+  roomNum: Int
+  totalPrice: Int
+}
+
+input ReservationObjectInput {
+  GuestTell: String
+  canceledAt: String
+  checkInTime: String!
+  checkOutTime: String!
+  guestEmail: String
+  guestName: String
+  guestTell: String
+  peopleNum: Int!
+  planID: ID!
+  planNum: Int
+  policyID: ID!
+  reservationID: ID!
+  roomID: ID!
+  roomNum: Int
+  totalPrice: Int
+}
+
+type RoomChargeMast {
+  roomChargeID: ID!
+  roomChargePrice: Int
+}
+
+input RoomChargeMastInput {
+  roomChargeID: ID!
+  roomChargePrice: Int
+}
+
+type RoomMast {
+  deletedAt: String
+  description: String!
+  inSale: Boolean
+  maxPeopleNum: Int!
+  minOrderNum: Int!
+  name: String!
+  roomID: ID!
+  stockNum: Int!
+  subDescription: String!
+}
+
+input RoomMastInput {
+  deletedAt: String
+  description: String!
+  inSale: Boolean
+  maxPeopleNum: Int!
+  minOrderNum: Int!
+  name: String!
+  roomID: ID!
+  stockNum: Int!
+  subDescription: String!
+}
+
+type RoomStatus {
+  Time: String!
+  availableNum: Int
+  dateTime: String!
+  isAvailabe: Boolean
+  roomID: ID!
+  soldNum: Int
+}
+
+input RoomStatusInput {
+  Time: String!
+  availableNum: Int
+  dateTime: String!
+  isAvailabe: Boolean
+  roomID: ID!
+  soldNum: Int
+}
+
 type DateStatusObject {
   date: AWSDate!
   isStayable: Boolean!
@@ -160,40 +248,6 @@ input PolicyMastInput {
   roomChargePrice: Int
 }
 
-type ReservationObject {
-  reservationID: ID!
-  checkInTime: String!
-  checkOutTime: String!
-  planID: ID!
-  roomID: ID!
-  roomNum: Int
-  planNum: Int
-  peopleNum: Int!
-  policyID: ID!
-  totalPrice: Int
-  guestName: String
-  guestEmail: String
-  GuestTell: String
-  canceledAt: String
-}
-
-input ReservationObjectInput {
-  reservationID: ID!
-  checkInTime: String!
-  checkOutTime: String!
-  planID: ID!
-  roomID: ID!
-  roomNum: Int
-  planNum: Int
-  peopleNum: Int!
-  policyID: ID!
-  totalPrice: Int
-  guestName: String
-  guestEmail: String
-  GuestTell: String
-  canceledAt: String
-}
-
 type ReservationPlanInfo {
   reservationID: String!
   planID: String!
@@ -234,46 +288,6 @@ type RoomImageMappingTemplate {
 input RoomImageMappingTemplateInput {
   roomID: String!
   imageID: String
-}
-
-type RoomMast {
-  roomID: ID!
-  name: String!
-  description: String!
-  subDescription: String!
-  maxPeopleNum: Int!
-  stockNum: Int!
-  minOrderNum: Int!
-  deletedAt: String
-  inSale: Boolean
-}
-
-input RoomMastInput {
-  roomID: ID!
-  name: String!
-  description: String!
-  subDescription: String!
-  maxPeopleNum: Int!
-  stockNum: Int!
-  minOrderNum: Int!
-  deletedAt: String
-  inSale: Boolean
-}
-
-type RoomStatus {
-  roomID: ID!
-  Time: String!
-  soldNum: Int
-  availableNum: Int
-  isAvailabe: Boolean
-}
-
-input RoomStatusInput {
-  roomID: ID!
-  Time: String!
-  soldNum: Int
-  availableNum: Int
-  isAvailabe: Boolean
 }
 
 type S3Object {
